@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitConverter.Android", "UnitConverter\UnitConverter.Android\UnitConverter.Android.csproj", "{CFEA7403-2448-4EC5-AC50-C92B618A18B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitConverter", "UnitConverter\UnitConverter\UnitConverter.csproj", "{E4782DBA-E3CD-4439-AB76-A503DD219AC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitConverter", "UnitConverter\UnitConverter\UnitConverter.csproj", "{E4782DBA-E3CD-4439-AB76-A503DD219AC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
