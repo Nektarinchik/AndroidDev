@@ -1,0 +1,15 @@
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\bin\Debug\netstandard2.0\UnitConverter.deps.json
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\bin\Debug\netstandard2.0\UnitConverter.dll
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\bin\Debug\netstandard2.0\UnitConverter.pdb
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\obj\Debug\netstandard2.0\UnitConverter.csproj.AssemblyReference.cache
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\obj\Debug\netstandard2.0\UnitConverter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\obj\Debug\netstandard2.0\UnitConverter.AssemblyInfoInputs.cache
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\obj\Debug\netstandard2.0\UnitConverter.AssemblyInfo.cs
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\obj\Debug\netstandard2.0\UnitConverter.csproj.CoreCompileInputs.cache
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\obj\Debug\netstandard2.0\UnitConverter.dll
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\obj\Debug\netstandard2.0\refint\UnitConverter.dll
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\obj\Debug\netstandard2.0\UnitConverter.pdb
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\obj\Debug\netstandard2.0\ref\UnitConverter.dll
