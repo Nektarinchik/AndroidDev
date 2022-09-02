@@ -17,8 +17,7 @@ namespace UnitConverter
     //}
     public partial class MainPage : ContentPage
     {
-
-        private string currentCategory;
+        private Picker categoryPicker;
 
         private Picker processedPicker;
 
@@ -31,28 +30,18 @@ namespace UnitConverter
         }
         protected override void OnAppearing()
         {
-            currentCategory = null;
-            //StackLayout layout = new StackLayout();
 
-            //Label label1 = new Label();
-            //label1.Text = "Converter";
-            //label1.TextColor = Color.SkyBlue;
-            //label1.FontSize = 20;
-            //label1.HorizontalOptions = LayoutOptions.Center;
+            StackLayout mainLayout = new StackLayout();
+            mainLayout.Padding = new Thickness(5, 5, 5, 5);
 
-            //picker = new Picker
-            //{
-            //    Title = "Unit"
-            //};
-            //picker.Items.Add("Length");
-            //picker.Items.Add("Weight");
-            //picker.Items.Add("Speed");
-            //picker.SelectedIndexChanged += picker_SelectedIndexChanged;
+            Label appName = new Label();
+            appName.Text = "Converter";
+            appName.HorizontalOptions = LayoutOptions.Center;
 
-            //layout.Children.Add(label1);
-            //layout.Children.Add(picker);
+            categoryPicker = new Picker
+            {
 
-            //Content = layout;
+            };
 
             pickersLayout = new StackLayout
             {
@@ -71,12 +60,17 @@ namespace UnitConverter
                 Title = "Unit"
             };
 
-            rawPicker.SelectedIndexChanged += processedPicker_SelectedIndexChanged;
+            processedPicker.SelectedIndexChanged += processedPicker_SelectedIndexChanged;
 
             pickersLayout.Children.Add(rawPicker);
             pickersLayout.Children.Add(processedPicker);
 
             mainStackLayout.Children.Add(pickersLayout);
+
+            // new:
+
+            mainLayout.Children.Add(appName);
+            Content = mainLayout;
         }
         void rawPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -103,7 +97,6 @@ namespace UnitConverter
                     processedPicker.Items.Add("sm");
                     processedPicker.Items.Add("foot");
                     processedPicker.Items.Add("m");
-                    currentCategory = "Length";
                     break;
                 case "Weight":
                     rawPicker.Items.Clear();
@@ -117,7 +110,6 @@ namespace UnitConverter
                     processedPicker.Items.Add("kg");
                     processedPicker.Items.Add("ounces");
                     processedPicker.Items.Add("mg");
-                    currentCategory = "Weight";
                     break;
                 case "Speed":
                     rawPicker.Items.Clear();
@@ -131,7 +123,6 @@ namespace UnitConverter
                     processedPicker.Items.Add("km/h");
                     processedPicker.Items.Add("miles/h");
                     processedPicker.Items.Add("nodes");
-                    currentCategory = "Speed";
                     break;
                 default:
                     break;
