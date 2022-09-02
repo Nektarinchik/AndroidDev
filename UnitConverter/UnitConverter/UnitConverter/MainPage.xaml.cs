@@ -8,13 +8,6 @@ using Xamarin.Forms;
 
 namespace UnitConverter
 {
-    //public static class Constant
-    //{
-    //    public static readonly string categoryDefault = "Сategory";
-    //    public static readonly string categoryLength = "Length";
-    //    public static readonly string categoryWeight = "Weight";
-    //    public static readonly string categorySpeed = "Speed";
-    //}
     public partial class MainPage : ContentPage
     {
         private Picker categoryPicker;
@@ -64,14 +57,24 @@ namespace UnitConverter
             StackLayout mainLayout = new StackLayout();
             mainLayout.Padding = new Thickness(5, 5, 5, 5);
 
-            Label appName = new Label();
-            appName.Text = "Converter";
-            appName.HorizontalOptions = LayoutOptions.Center;
+            Label appName = new Label
+            {
+                Text = "Converter",
+                HorizontalOptions = LayoutOptions.Center,
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 30.0,
+                TextColor = Color.Black
+            };
 
             categoryPicker = new Picker
             {
-                Title = "Category"
+                Title = "Category",
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 16.0,
+                TextColor = Color.Black,
+                HorizontalTextAlignment = TextAlignment.Center,
             };
+
             categoryPicker.Items.Add("Length");
             categoryPicker.Items.Add("Weight");
             categoryPicker.Items.Add("Speed");
@@ -91,6 +94,11 @@ namespace UnitConverter
                 Content = new Label { Text = "0" }
             };
 
+            Label equalLabel = new Label
+            {
+                Text = "="
+            };
+
             Frame processedValue = new Frame
             {
                 BorderColor = Color.Gray,
@@ -101,6 +109,7 @@ namespace UnitConverter
             };
 
             valuesLayout.Children.Add(rawValue);
+            valuesLayout.Children.Add(equalLabel);
             valuesLayout.Children.Add(processedValue);
 
             pickersLayout = new StackLayout
@@ -122,7 +131,13 @@ namespace UnitConverter
 
             processedPicker.SelectedIndexChanged += processedPicker_SelectedIndexChanged;
 
+            Image imageSwitch = new Image
+            {
+                Source = ImageSource.FromResource("UnitConverter.Images.switch.png")
+            };
+
             pickersLayout.Children.Add(rawPicker);
+            pickersLayout.Children.Add(imageSwitch);
             pickersLayout.Children.Add(processedPicker);
 
             Grid buttons = new Grid
@@ -261,8 +276,6 @@ namespace UnitConverter
             buttons.Children.Add(buttonClearAll, 2, 3);
             buttons.Children.Add(buttonPop,      0, 4);
             Grid.SetColumnSpan(buttonPop, 3);
-
-            // new:
 
             mainLayout.Children.Add(appName);
             mainLayout.Children.Add(categoryPicker);
