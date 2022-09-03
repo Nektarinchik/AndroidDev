@@ -11,6 +11,10 @@ namespace UnitConverter
 {
     public partial class MainPage : ContentPage
     {
+        private double rawValue;
+
+        private double processedValue;
+
         private Picker categoryPicker;
 
         private Picker processedPicker;
@@ -54,7 +58,6 @@ namespace UnitConverter
         }
         protected override void OnAppearing()
         {
-
             StackLayout mainLayout = new StackLayout();
             mainLayout.Padding = new Thickness(5, 5, 5, 5);
 
@@ -190,123 +193,189 @@ namespace UnitConverter
             {
                 RowDefinitions =
                 {
-                    new RowDefinition(),
-                    new RowDefinition(),
-                    new RowDefinition(),
-                    new RowDefinition(),
-                    new RowDefinition()
+                    new RowDefinition{ Height = new GridLength(1, GridUnitType.Star) },
+                    new RowDefinition{ Height = new GridLength(1, GridUnitType.Star) },
+                    new RowDefinition{ Height = new GridLength(1, GridUnitType.Star) },
+                    new RowDefinition{ Height = new GridLength(1, GridUnitType.Star) },
+                    new RowDefinition{ Height = new GridLength(1, GridUnitType.Star) }
                 },
                 ColumnDefinitions =
                 {
-                    new ColumnDefinition(),
-                    new ColumnDefinition(),
-                    new ColumnDefinition()
-                }
+                    new ColumnDefinition{ Width = new GridLength(1, GridUnitType.Star) },
+                    new ColumnDefinition{ Width = new GridLength(1, GridUnitType.Star) },
+                    new ColumnDefinition{ Width = new GridLength(1, GridUnitType.Star) }
+                },
+                BackgroundColor = Color.FromHex("#FFFFFF")
             };
 
             buttonOne = new Button
             {
-                BackgroundColor = Color.Black,
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
                 Text = "1",
-                TextColor = Color.White,
-                Margin = new Thickness(5),
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                Margin = new Thickness(0),
+                Padding = new Thickness(30)
             };
+            buttonOne.Clicked += ButtonOne_Clicked;
 
             buttonTwo = new Button
             {
-                BackgroundColor = Color.Black,
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
                 Text = "2",
-                TextColor = Color.White,
-                Margin = new Thickness(5),
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                Margin = new Thickness(0),
+                Padding = new Thickness(30)
             };
+            buttonTwo.Clicked += ButtonTwo_Clicked;
 
             buttonThree = new Button
             {
-                BackgroundColor = Color.Black,
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
                 Text = "3",
-                TextColor = Color.White,
-                Margin = new Thickness(5),
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                Margin = new Thickness(0),
+                Padding = new Thickness(30)
             };
+            buttonThree.Clicked += ButtonThree_Clicked;
 
             buttonFour = new Button
             {
-                BackgroundColor = Color.Black,
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
                 Text = "4",
-                TextColor = Color.White,
-                Margin = new Thickness(5),
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                Margin = new Thickness(0),
+                Padding = new Thickness(30)
             };
+            buttonFour.Clicked += ButtonFour_Clicked;
 
             buttonFive = new Button
             {
-                BackgroundColor = Color.Black,
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
                 Text = "5",
-                TextColor = Color.White,
-                Margin = new Thickness(5),
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                Margin = new Thickness(0),
+                Padding = new Thickness(30)
             };
+            buttonFive.Clicked += ButtonFive_Clicked;
 
             buttonSix = new Button
             {
-                BackgroundColor = Color.Black,
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
                 Text = "6",
-                TextColor = Color.White,
-                Margin = new Thickness(5),
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                Margin = new Thickness(0),
+                Padding = new Thickness(30)
             };
+            buttonSix.Clicked += ButtonSix_Clicked;
 
             buttonSeven = new Button
             {
-                BackgroundColor = Color.Black,
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
                 Text = "7",
-                TextColor = Color.White,
-                Margin = new Thickness(5),
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                Margin = new Thickness(0),
+                Padding = new Thickness(30)
             };
+            buttonSeven.Clicked += ButtonSeven_Clicked;
 
             buttonEight = new Button
             {
-                BackgroundColor = Color.Black,
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
                 Text = "8",
-                TextColor = Color.White,
-                Margin = new Thickness(5),
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                Margin = new Thickness(0),
+                Padding = new Thickness(30)
             };
+            buttonEight.Clicked += ButtonEight_Clicked;
 
             buttonNine = new Button
             {
-                BackgroundColor = Color.Black,
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
                 Text = "9",
-                TextColor = Color.White,
-                Margin = new Thickness(5),
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                Margin = new Thickness(0),
+                Padding = new Thickness(30)
             };
-
+            buttonNine.Clicked += ButtonNine_Clicked;
+            
             buttonPoint = new Button
             {
-                BackgroundColor = Color.Black,
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
                 Text = ".",
-                TextColor = Color.White,
-                Margin = new Thickness(5),
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                Margin = new Thickness(0),
+                Padding = new Thickness(30)
             };
+            buttonPoint.Clicked += ButtonPoint_Clicked;
 
             buttonZero = new Button
             {
-                BackgroundColor = Color.Black,
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
                 Text = "0",
-                TextColor = Color.White,
-                Margin = new Thickness(5),
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                Margin = new Thickness(0),
+                Padding = new Thickness(30)
             };
+            buttonZero.Clicked += ButtonZero_Clicked;
 
             buttonClearAll = new Button
             {
-                BackgroundColor = Color.Black,
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
                 Text = "C",
-                TextColor = Color.White,
-                Margin = new Thickness(5),
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                Margin = new Thickness(0),
+                Padding = new Thickness(30)
             };
+            buttonClearAll.Clicked += ButtonClearAll_Clicked;
 
             buttonPop = new Button
             {
-                BackgroundColor = Color.Black,
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
                 Text = "-",
-                TextColor = Color.White,
-                Margin = new Thickness(5),
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                Margin = new Thickness(0),
+                Padding = new Thickness(30)
             };
+            buttonPop.Clicked += ButtonPop_Clicked;
 
             buttons.Children.Add(buttonOne,      0, 0);
             buttons.Children.Add(buttonTwo,      1, 0);
@@ -330,6 +399,88 @@ namespace UnitConverter
             mainLayout.Children.Add(buttons);
             Content = mainLayout;
         }
+
+        private void ButtonPop_Clicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ButtonClearAll_Clicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ButtonZero_Clicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ButtonPoint_Clicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ButtonNine_Clicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ButtonEight_Clicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ButtonSeven_Clicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ButtonSix_Clicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ButtonFive_Clicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ButtonFour_Clicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ButtonThree_Clicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ButtonTwo_Clicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private async void ButtonOne_Clicked(object sender, EventArgs e)
+        {
+            double tempRawValue = rawValue;
+            string buff = rawValue.ToString();
+            if (buff.Equals("0"))
+            {
+                buff = "";
+            }
+            buff += "1";
+            if (buff.Length == 16)
+            {
+                rawValue = tempRawValue;
+                await DisplayAlert("Value is too much", "", "Ok");
+            }
+            else
+            {
+                rawValue = Convert.ToDouble(buff);
+            }
+            rawValueLabel.Text = rawValue.ToString();
+        }
+
         void rawPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             rawPicker.Title = rawPicker.Items[rawPicker.SelectedIndex];
