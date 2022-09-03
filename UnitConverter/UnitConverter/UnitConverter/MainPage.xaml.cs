@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace UnitConverter
 {
@@ -15,10 +16,6 @@ namespace UnitConverter
         private Picker processedPicker;
 
         private Picker rawPicker;
-
-        private StackLayout pickersLayout;
-
-        private StackLayout valuesLayout;
 
         private Button buttonOne;
 
@@ -46,6 +43,10 @@ namespace UnitConverter
 
         private Button buttonPop;
 
+        private Label rawValueLabel;
+
+        private Label processedValueLabel;
+
         //private Label rawValueLabel;
         public MainPage()
         {
@@ -70,7 +71,7 @@ namespace UnitConverter
             {
                 Title = "Category",
                 FontAttributes = FontAttributes.Bold,
-                FontSize = 16.0,
+                FontSize = 20.0,
                 TextColor = Color.Black,
                 HorizontalTextAlignment = TextAlignment.Center,
             };
@@ -80,53 +81,38 @@ namespace UnitConverter
             categoryPicker.Items.Add("Speed");
             categoryPicker.SelectedIndexChanged += categoryPicker_SelectedIndexChanged;
 
-            valuesLayout = new StackLayout
+            Grid pickers = new Grid
             {
-                Orientation = StackOrientation.Horizontal
-            };
-
-            Frame rawValue = new Frame
-            {
-                BorderColor = Color.Gray,
-                BackgroundColor = Color.FromHex("#e1e1e1"),
-                CornerRadius = 8,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                Content = new Label { Text = "0" }
-            };
-
-            Label equalLabel = new Label
-            {
-                Text = "="
-            };
-
-            Frame processedValue = new Frame
-            {
-                BorderColor = Color.Gray,
-                BackgroundColor = Color.FromHex("#e1e1e1"),
-                CornerRadius = 8,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                Content = new Label { Text = "0" }
-            };
-
-            valuesLayout.Children.Add(rawValue);
-            valuesLayout.Children.Add(equalLabel);
-            valuesLayout.Children.Add(processedValue);
-
-            pickersLayout = new StackLayout
-            {
-                Orientation = StackOrientation.Horizontal
+                RowDefinitions =
+                {
+                    new RowDefinition(),
+                },
+                ColumnDefinitions =
+                {
+                    new ColumnDefinition(),
+                    new ColumnDefinition(),
+                    new ColumnDefinition()
+                }
             };
 
             rawPicker = new Picker
             {
-                Title = "Unit"
+                Title = "0",
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                HorizontalTextAlignment = TextAlignment.Center,
             };
 
             rawPicker.SelectedIndexChanged += rawPicker_SelectedIndexChanged;
 
             processedPicker = new Picker
             {
-                Title = "Unit"
+                Title = "0",
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                HorizontalTextAlignment = TextAlignment.Center,
             };
 
             processedPicker.SelectedIndexChanged += processedPicker_SelectedIndexChanged;
@@ -136,9 +122,69 @@ namespace UnitConverter
                 Source = ImageSource.FromResource("UnitConverter.Images.switch.png")
             };
 
-            pickersLayout.Children.Add(rawPicker);
-            pickersLayout.Children.Add(imageSwitch);
-            pickersLayout.Children.Add(processedPicker);
+            pickers.Children.Add(rawPicker, 0, 0);
+            pickers.Children.Add(imageSwitch, 1, 0);
+            pickers.Children.Add(processedPicker, 2, 0);
+
+            Grid values = new Grid
+            {
+                RowDefinitions =
+                {
+                    new RowDefinition()
+                },
+                ColumnDefinitions =
+                {
+                    new ColumnDefinition(),
+                    new ColumnDefinition(),
+                    new ColumnDefinition()
+                }
+            };
+
+            Frame rawValue = new Frame
+            {
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
+                CornerRadius = 8,
+                HorizontalOptions = LayoutOptions.Center,
+            };
+            rawValueLabel = new Label 
+            {
+                Text = "0",
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+            };
+            rawValue.Content = rawValueLabel;
+
+            Label equalLabel = new Label
+            {
+                Text = "=",
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 35.0,
+                TextColor = Color.Black,
+                VerticalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Center
+            };
+
+            Frame processedValue = new Frame
+            {
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
+                CornerRadius = 8,
+                HorizontalOptions = LayoutOptions.Center,
+            };
+            processedValueLabel = new Label
+            {
+                Text = "0",
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+            };
+            processedValue.Content = processedValueLabel;
+
+            values.Children.Add(rawValue, 0, 0);
+            values.Children.Add(equalLabel, 1, 0);
+            values.Children.Add(processedValue, 2, 0);
 
             Grid buttons = new Grid
             {
@@ -148,7 +194,7 @@ namespace UnitConverter
                     new RowDefinition(),
                     new RowDefinition(),
                     new RowDefinition(),
-                    new RowDefinition { Height = new GridLength(1, GridUnitType.Star) }
+                    new RowDefinition()
                 },
                 ColumnDefinitions =
                 {
@@ -279,8 +325,8 @@ namespace UnitConverter
 
             mainLayout.Children.Add(appName);
             mainLayout.Children.Add(categoryPicker);
-            mainLayout.Children.Add(pickersLayout);
-            mainLayout.Children.Add(valuesLayout);
+            mainLayout.Children.Add(pickers);
+            mainLayout.Children.Add(values);
             mainLayout.Children.Add(buttons);
             Content = mainLayout;
         }
