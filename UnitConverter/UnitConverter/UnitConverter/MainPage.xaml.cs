@@ -431,7 +431,7 @@ namespace UnitConverter
         {
             string buff = rawValue.ToString();
 
-            if (!buff.Contains(",") && !buff.Contains("."))
+            if (!buff.Contains("."))
             {
                 if (buff.Length == 15)
                 {
@@ -443,7 +443,7 @@ namespace UnitConverter
                 }
                 else
                 {
-                    if (!rawValueLabel.Text.Contains(",") && !rawValueLabel.Text.Contains("."))
+                    if (!rawValueLabel.Text.Contains("."))
                     {
                         // comma hasnt been yet
                         rawValueLabel.Text += ".";
@@ -463,7 +463,18 @@ namespace UnitConverter
             {
                 buff = "";
             }
-            buff += "0";
+
+            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            {
+                buff += ".";
+                buff += "0";
+            }
+            else
+            {
+                buff += "0";
+            }
+
+            //buff += "0";
             if (buff.Length == 16)
             {
                 rawValue = tempRawValue;
@@ -517,7 +528,18 @@ namespace UnitConverter
             {
                 buff = "";
             }
-            buff += "8";
+
+            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            {
+                buff += ".";
+                buff += "8";
+            }
+            else
+            {
+                buff += "8";
+            }
+
+            //buff += "8";
             if (buff.Length == 16)
             {
                 rawValue = tempRawValue;
@@ -538,7 +560,18 @@ namespace UnitConverter
             {
                 buff = "";
             }
-            buff += "7";
+
+            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            {
+                buff += ".";
+                buff += "7";
+            }
+            else
+            {
+                buff += "7";
+            }
+
+            //buff += "7";
             if (buff.Length == 16)
             {
                 rawValue = tempRawValue;
@@ -559,7 +592,18 @@ namespace UnitConverter
             {
                 buff = "";
             }
-            buff += "6";
+
+            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            {
+                buff += ".";
+                buff += "6";
+            }
+            else
+            {
+                buff += "6";
+            }
+
+            //buff += "6";
             if (buff.Length == 16)
             {
                 rawValue = tempRawValue;
@@ -580,7 +624,18 @@ namespace UnitConverter
             {
                 buff = "";
             }
-            buff += "5";
+
+            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            {
+                buff += ".";
+                buff += "5";
+            }
+            else
+            {
+                buff += "5";
+            }
+
+            //buff += "5";
             if (buff.Length == 16)
             {
                 rawValue = tempRawValue;
@@ -601,7 +656,18 @@ namespace UnitConverter
             {
                 buff = "";
             }
-            buff += "4";
+
+            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            {
+                buff += ".";
+                buff += "4";
+            }
+            else
+            {
+                buff += "4";
+            }
+
+            //buff += "4";
             if (buff.Length == 16)
             {
                 rawValue = tempRawValue;
@@ -622,7 +688,18 @@ namespace UnitConverter
             {
                 buff = "";
             }
-            buff += "3";
+
+            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            {
+                buff += ".";
+                buff += "3";
+            }
+            else
+            {
+                buff += "3";
+            }
+
+            //buff += "3";
             if (buff.Length == 16)
             {
                 rawValue = tempRawValue;
@@ -643,7 +720,18 @@ namespace UnitConverter
             {
                 buff = "";
             }
-            buff += "2";
+
+            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            {
+                buff += ".";
+                buff += "2";
+            }
+            else
+            {
+                buff += "2";
+            }
+
+            //buff += "2";
             if (buff.Length == 16)
             {
                 rawValue = tempRawValue;
@@ -664,7 +752,18 @@ namespace UnitConverter
             {
                 buff = "";
             }
-            buff += "1";
+
+            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            {
+                buff += ".";
+                buff += "1";
+            }
+            else
+            {
+                buff += "1";
+            }
+
+            //buff += "1";
             if (buff.Length == 16)
             {
                 rawValue = tempRawValue;
