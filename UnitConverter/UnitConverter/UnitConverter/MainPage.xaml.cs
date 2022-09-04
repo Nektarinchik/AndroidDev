@@ -14,9 +14,12 @@ namespace UnitConverter
 
         private Image imageSwitch;
 
-        private double rawValue;
+        private StringBuilder rawValueStr;
 
-        private double processedValue;
+        private StringBuilder processedValueStr;
+        //private double rawValue;
+
+        //private double processedValue;
 
         private Picker categoryPicker;
 
@@ -61,6 +64,8 @@ namespace UnitConverter
         }
         protected override void OnAppearing()
         {
+            rawValueStr = new StringBuilder();
+            processedValueStr = new StringBuilder();
             StackLayout mainLayout = new StackLayout();
             mainLayout.Padding = new Thickness(5, 5, 5, 5);
 
@@ -406,374 +411,332 @@ namespace UnitConverter
         }
         private void ButtonPop_Clicked(object sender, EventArgs e)
         {
-            string buff = rawValue.ToString();
-            if (!buff.Equals("0"))
+            if (!rawValueStr.Equals("0") && !string.IsNullOrEmpty(rawValueStr.ToString()))
             {
-                buff = buff.Substring(0, buff.Length - 1);
-                try
-                {
-                    rawValue = Convert.ToDouble(buff);
-                }
-                catch (FormatException)
-                {
-                    rawValue = 0.0;
-                }
-                rawValueLabel.Text = rawValue.ToString();
+                string buffs = rawValueStr.ToString();
+                rawValueStr.Clear();
+                rawValueStr.Append(buffs.Substring(0, buffs.Length - 1));
+                //try
+                //{
+                //    rawValue = Convert.ToDouble(buff);
+                //}
+                //catch (FormatException)
+                //{
+                //    rawValue = 0.0;
+                //}
+                rawValueLabel.Text = rawValueStr.ToString();
             }
         }
 
         private void ButtonClearAll_Clicked(object sender, EventArgs e)
         {
-            rawValue = 0.0;
+            rawValueStr.Clear();
             rawValueLabel.Text = "0";
         }
         private async void ButtonPoint_Clicked(object sender, EventArgs e)
         {
-            string buff = rawValue.ToString();
+            //string buff = rawValue.ToString();
 
-            if (!buff.Contains("."))
-            {
-                if (buff.Length == 15)
-                {
-                    await DisplayAlert("Value is too much", "", "Ok");
-                }
-                else if (buff.Equals("0"))
-                {
-                    rawValueLabel.Text += ".";
-                }
-                else
-                {
-                    if (!rawValueLabel.Text.Contains("."))
-                    {
-                        // comma hasnt been yet
-                        rawValueLabel.Text += ".";
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-            }
+            //if (!buff.Contains("."))
+            //{
+            //    if (buff.Length == 15)
+            //    {
+            //        await DisplayAlert("Value is too much", "", "Ok");
+            //    }
+            //    else if (buff.Equals("0"))
+            //    {
+            //        rawValueLabel.Text += ".";
+            //    }
+            //    else
+            //    {
+            //        if (!rawValueLabel.Text.Contains("."))
+            //        {
+            //            // comma hasnt been yet
+            //            rawValueLabel.Text += ".";
+            //        }
+            //        else
+            //        {
+            //            return;
+            //        }
+            //    }
+            //}
         }
         private async void ButtonZero_Clicked(object sender, EventArgs e)
         {
-            double tempRawValue = rawValue;
-            string buff = rawValue.ToString();
+            string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
+                rawValueStr.Clear();
             }
 
-            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
-                buff += ".";
-                buff += "0";
+                rawValueStr.Append(".");
+                rawValueStr.Append("0");
             }
             else
             {
-                buff += "0";
+                rawValueStr.Append("0");
             }
 
-            //buff += "0";
-            if (buff.Length == 16)
+            if (rawValueStr.Length == 16)
             {
-                rawValue = tempRawValue;
+                rawValueStr.Clear();
+                rawValueStr.Append(buff);
                 await DisplayAlert("Value is too much", "", "Ok");
             }
-            else
-            {
-                rawValue = Convert.ToDouble(buff);
-            }
-            rawValueLabel.Text = rawValue.ToString();
+            rawValueLabel.Text = rawValueStr.ToString();
         }
         private async void ButtonNine_Clicked(object sender, EventArgs e)
         {
-            double tempRawValue = rawValue;
-            string buff = rawValue.ToString();
+            string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
+                rawValueStr.Clear();
             }
 
-            //test
-            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
-                buff += ".";
-                buff += "9";
+                rawValueStr.Append(".");
+                rawValueStr.Append("9");
             }
             else
             {
-                buff += "9";
+                rawValueStr.Append("9");
             }
-            //test
 
-            //buff += "9";
-            if (buff.Length == 16)
+            if (rawValueStr.Length == 16)
             {
-                rawValue = tempRawValue;
+                rawValueStr.Clear();
+                rawValueStr.Append(buff);
                 await DisplayAlert("Value is too much", "", "Ok");
             }
-            else
-            {
-                rawValue = Convert.ToDouble(buff);
-            }
-            rawValueLabel.Text = rawValue.ToString();
+            rawValueLabel.Text = rawValueStr.ToString();
         }
-
         private async void ButtonEight_Clicked(object sender, EventArgs e)
         {
-            double tempRawValue = rawValue;
-            string buff = rawValue.ToString();
+            string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
+                rawValueStr.Clear();
             }
 
-            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
-                buff += ".";
-                buff += "8";
+                rawValueStr.Append(".");
+                rawValueStr.Append("8");
             }
             else
             {
-                buff += "8";
+                rawValueStr.Append("8");
             }
 
-            //buff += "8";
-            if (buff.Length == 16)
+            if (rawValueStr.Length == 16)
             {
-                rawValue = tempRawValue;
+                rawValueStr.Clear();
+                rawValueStr.Append(buff);
                 await DisplayAlert("Value is too much", "", "Ok");
             }
-            else
-            {
-                rawValue = Convert.ToDouble(buff);
-            }
-            rawValueLabel.Text = rawValue.ToString();
+            rawValueLabel.Text = rawValueStr.ToString();
         }
 
         private async void ButtonSeven_Clicked(object sender, EventArgs e)
         {
-            double tempRawValue = rawValue;
-            string buff = rawValue.ToString();
+            string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
+                rawValueStr.Clear();
             }
 
-            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
-                buff += ".";
-                buff += "7";
+                rawValueStr.Append(".");
+                rawValueStr.Append("7");
             }
             else
             {
-                buff += "7";
+                rawValueStr.Append("7");
             }
 
-            //buff += "7";
-            if (buff.Length == 16)
+            if (rawValueStr.Length == 16)
             {
-                rawValue = tempRawValue;
+                rawValueStr.Clear();
+                rawValueStr.Append(buff);
                 await DisplayAlert("Value is too much", "", "Ok");
             }
-            else
-            {
-                rawValue = Convert.ToDouble(buff);
-            }
-            rawValueLabel.Text = rawValue.ToString();
+            rawValueLabel.Text = rawValueStr.ToString();
         }
 
         private async void ButtonSix_Clicked(object sender, EventArgs e)
         {
-            double tempRawValue = rawValue;
-            string buff = rawValue.ToString();
+            string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
+                rawValueStr.Clear();
             }
 
-            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
-                buff += ".";
-                buff += "6";
+                rawValueStr.Append(".");
+                rawValueStr.Append("6");
             }
             else
             {
-                buff += "6";
+                rawValueStr.Append("6");
             }
 
-            //buff += "6";
-            if (buff.Length == 16)
+            if (rawValueStr.Length == 16)
             {
-                rawValue = tempRawValue;
+                rawValueStr.Clear();
+                rawValueStr.Append(buff);
                 await DisplayAlert("Value is too much", "", "Ok");
             }
-            else
-            {
-                rawValue = Convert.ToDouble(buff);
-            }
-            rawValueLabel.Text = rawValue.ToString();
+            rawValueLabel.Text = rawValueStr.ToString();
         }
 
         private async void ButtonFive_Clicked(object sender, EventArgs e)
         {
-            double tempRawValue = rawValue;
-            string buff = rawValue.ToString();
+            string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
+                rawValueStr.Clear();
             }
 
-            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
-                buff += ".";
-                buff += "5";
+                rawValueStr.Append(".");
+                rawValueStr.Append("5");
             }
             else
             {
-                buff += "5";
+                rawValueStr.Append("5");
             }
 
-            //buff += "5";
-            if (buff.Length == 16)
+            if (rawValueStr.Length == 16)
             {
-                rawValue = tempRawValue;
+                rawValueStr.Clear();
+                rawValueStr.Append(buff);
                 await DisplayAlert("Value is too much", "", "Ok");
             }
-            else
-            {
-                rawValue = Convert.ToDouble(buff);
-            }
-            rawValueLabel.Text = rawValue.ToString();
+            rawValueLabel.Text = rawValueStr.ToString();
         }
 
         private async void ButtonFour_Clicked(object sender, EventArgs e)
         {
-            double tempRawValue = rawValue;
-            string buff = rawValue.ToString();
+            string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
+                rawValueStr.Clear();
             }
 
-            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
-                buff += ".";
-                buff += "4";
+                rawValueStr.Append(".");
+                rawValueStr.Append("4");
             }
             else
             {
-                buff += "4";
+                rawValueStr.Append("4");
             }
 
-            //buff += "4";
-            if (buff.Length == 16)
+            if (rawValueStr.Length == 16)
             {
-                rawValue = tempRawValue;
+                rawValueStr.Clear();
+                rawValueStr.Append(buff);
                 await DisplayAlert("Value is too much", "", "Ok");
             }
-            else
-            {
-                rawValue = Convert.ToDouble(buff);
-            }
-            rawValueLabel.Text = rawValue.ToString();
+            rawValueLabel.Text = rawValueStr.ToString();
         }
 
         private async void ButtonThree_Clicked(object sender, EventArgs e)
         {
-            double tempRawValue = rawValue;
-            string buff = rawValue.ToString();
+            string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
+                rawValueStr.Clear();
             }
 
-            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
-                buff += ".";
-                buff += "3";
+                rawValueStr.Append(".");
+                rawValueStr.Append("3");
             }
             else
             {
-                buff += "3";
+                rawValueStr.Append("3");
             }
 
-            //buff += "3";
-            if (buff.Length == 16)
+            if (rawValueStr.Length == 16)
             {
-                rawValue = tempRawValue;
+                rawValueStr.Clear();
+                rawValueStr.Append(buff);
                 await DisplayAlert("Value is too much", "", "Ok");
             }
-            else
-            {
-                rawValue = Convert.ToDouble(buff);
-            }
-            rawValueLabel.Text = rawValue.ToString();
+            rawValueLabel.Text = rawValueStr.ToString();
         }
 
         private async void ButtonTwo_Clicked(object sender, EventArgs e)
         {
-            double tempRawValue = rawValue;
-            string buff = rawValue.ToString();
+            string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
+                rawValueStr.Clear();
             }
 
-            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
-                buff += ".";
-                buff += "2";
+                rawValueStr.Append(".");
+                rawValueStr.Append("2");
             }
             else
             {
-                buff += "2";
+                rawValueStr.Append("2");
             }
 
-            //buff += "2";
-            if (buff.Length == 16)
+            if (rawValueStr.Length == 16)
             {
-                rawValue = tempRawValue;
+                rawValueStr.Clear();
+                rawValueStr.Append(buff);
                 await DisplayAlert("Value is too much", "", "Ok");
             }
-            else
-            {
-                rawValue = Convert.ToDouble(buff);
-            }
-            rawValueLabel.Text = rawValue.ToString();
+            rawValueLabel.Text = rawValueStr.ToString();
         }
 
         private async void ButtonOne_Clicked(object sender, EventArgs e)
         {
-            double tempRawValue = rawValue;
-            string buff = rawValue.ToString();
+            string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
+                rawValueStr.Clear();
             }
 
-            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
-                buff += ".";
-                buff += "1";
+                rawValueStr.Append(".");
+                rawValueStr.Append("1");
             }
             else
             {
-                buff += "1";
+                rawValueStr.Append("1");
             }
 
-            //buff += "1";
-            if (buff.Length == 16)
+            if (rawValueStr.Length == 16)
             {
-                rawValue = tempRawValue;
+                rawValueStr.Clear();
+                rawValueStr.Append(buff);
                 await DisplayAlert("Value is too much", "", "Ok");
             }
-            else
-            {
-                rawValue = Convert.ToDouble(buff);
-            }
-            rawValueLabel.Text = rawValue.ToString();
+            rawValueLabel.Text = rawValueStr.ToString();
         }
 
         void rawPicker_SelectedIndexChanged(object sender, EventArgs e)
