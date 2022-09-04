@@ -11,6 +11,9 @@ namespace UnitConverter
 {
     public partial class MainPage : ContentPage
     {
+
+        private Image imageSwitch;
+
         private double rawValue;
 
         private double processedValue;
@@ -45,13 +48,13 @@ namespace UnitConverter
 
         private Button buttonClearAll;
 
-        private Button buttonPop;
+        //private Button buttonPop;
+
+        private ImageButton buttonPop;
 
         private Label rawValueLabel;
 
         private Label processedValueLabel;
-
-        //private Label rawValueLabel;
         public MainPage()
         {
             InitializeComponent();
@@ -105,6 +108,7 @@ namespace UnitConverter
                 FontSize = 20.0,
                 TextColor = Color.Black,
                 HorizontalTextAlignment = TextAlignment.Center,
+                IsVisible = false
             };
 
             rawPicker.SelectedIndexChanged += rawPicker_SelectedIndexChanged;
@@ -116,13 +120,15 @@ namespace UnitConverter
                 FontSize = 20.0,
                 TextColor = Color.Black,
                 HorizontalTextAlignment = TextAlignment.Center,
+                IsVisible = false
             };
 
             processedPicker.SelectedIndexChanged += processedPicker_SelectedIndexChanged;
 
-            Image imageSwitch = new Image
+            imageSwitch = new Image
             {
-                Source = ImageSource.FromResource("UnitConverter.Images.switch.png")
+                Source = ImageSource.FromResource("UnitConverter.Images.switch.png"),
+                IsVisible = false
             };
 
             pickers.Children.Add(rawPicker, 0, 0);
@@ -156,6 +162,7 @@ namespace UnitConverter
                 FontAttributes = FontAttributes.Bold,
                 FontSize = 20.0,
                 TextColor = Color.Black,
+                LineBreakMode = LineBreakMode.HeadTruncation
             };
             rawValue.Content = rawValueLabel;
 
@@ -182,6 +189,7 @@ namespace UnitConverter
                 FontAttributes = FontAttributes.Bold,
                 FontSize = 20.0,
                 TextColor = Color.Black,
+                LineBreakMode = LineBreakMode.HeadTruncation
             };
             processedValue.Content = processedValueLabel;
 
@@ -364,14 +372,11 @@ namespace UnitConverter
             };
             buttonClearAll.Clicked += ButtonClearAll_Clicked;
 
-            buttonPop = new Button
+            buttonPop = new ImageButton
             {
                 BorderColor = Color.Gray,
                 BackgroundColor = Color.FromHex("#e1e1e1"),
-                Text = "-",
-                FontAttributes = FontAttributes.Bold,
-                FontSize = 20.0,
-                TextColor = Color.Black,
+                Source = ImageSource.FromResource("UnitConverter.Images.back.png"),
                 Margin = new Thickness(0),
                 Padding = new Thickness(30)
             };
@@ -399,65 +404,256 @@ namespace UnitConverter
             mainLayout.Children.Add(buttons);
             Content = mainLayout;
         }
-
         private void ButtonPop_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            string buff = rawValue.ToString();
+            if (!buff.Equals("0"))
+            {
+                buff = buff.Substring(0, buff.Length - 1);
+                try
+                {
+                    rawValue = Convert.ToDouble(buff);
+                }
+                catch (FormatException)
+                {
+                    rawValue = 0.0;
+                }
+                rawValueLabel.Text = rawValue.ToString();
+            }
         }
 
         private void ButtonClearAll_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            rawValue = 0.0;
+            rawValueLabel.Text = "0";
+        }
+        private async void ButtonPoint_Clicked(object sender, EventArgs e)
+        {
+            string buff = rawValue.ToString();
+
+            if (!buff.Contains(",") && !buff.Contains("."))
+            {
+                if (buff.Length == 15)
+                {
+                    await DisplayAlert("Value is too much", "", "Ok");
+                }
+                else if (buff.Equals("0"))
+                {
+                    rawValueLabel.Text += ".";
+                }
+                else
+                {
+                    if (!rawValueLabel.Text.Contains(",") && !rawValueLabel.Text.Contains("."))
+                    {
+                        // comma hasnt been yet
+                        rawValueLabel.Text += ".";
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
+        }
+        private async void ButtonZero_Clicked(object sender, EventArgs e)
+        {
+            double tempRawValue = rawValue;
+            string buff = rawValue.ToString();
+            if (buff.Equals("0"))
+            {
+                buff = "";
+            }
+            buff += "0";
+            if (buff.Length == 16)
+            {
+                rawValue = tempRawValue;
+                await DisplayAlert("Value is too much", "", "Ok");
+            }
+            else
+            {
+                rawValue = Convert.ToDouble(buff);
+            }
+            rawValueLabel.Text = rawValue.ToString();
+        }
+        private async void ButtonNine_Clicked(object sender, EventArgs e)
+        {
+            double tempRawValue = rawValue;
+            string buff = rawValue.ToString();
+            if (buff.Equals("0"))
+            {
+                buff = "";
+            }
+
+            //test
+            if (rawValueLabel.Text.Contains(".") && !buff.Contains("."))
+            {
+                buff += ".";
+                buff += "9";
+            }
+            else
+            {
+                buff += "9";
+            }
+            //test
+
+            //buff += "9";
+            if (buff.Length == 16)
+            {
+                rawValue = tempRawValue;
+                await DisplayAlert("Value is too much", "", "Ok");
+            }
+            else
+            {
+                rawValue = Convert.ToDouble(buff);
+            }
+            rawValueLabel.Text = rawValue.ToString();
         }
 
-        private void ButtonZero_Clicked(object sender, EventArgs e)
+        private async void ButtonEight_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            double tempRawValue = rawValue;
+            string buff = rawValue.ToString();
+            if (buff.Equals("0"))
+            {
+                buff = "";
+            }
+            buff += "8";
+            if (buff.Length == 16)
+            {
+                rawValue = tempRawValue;
+                await DisplayAlert("Value is too much", "", "Ok");
+            }
+            else
+            {
+                rawValue = Convert.ToDouble(buff);
+            }
+            rawValueLabel.Text = rawValue.ToString();
         }
 
-        private void ButtonPoint_Clicked(object sender, EventArgs e)
+        private async void ButtonSeven_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            double tempRawValue = rawValue;
+            string buff = rawValue.ToString();
+            if (buff.Equals("0"))
+            {
+                buff = "";
+            }
+            buff += "7";
+            if (buff.Length == 16)
+            {
+                rawValue = tempRawValue;
+                await DisplayAlert("Value is too much", "", "Ok");
+            }
+            else
+            {
+                rawValue = Convert.ToDouble(buff);
+            }
+            rawValueLabel.Text = rawValue.ToString();
         }
 
-        private void ButtonNine_Clicked(object sender, EventArgs e)
+        private async void ButtonSix_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            double tempRawValue = rawValue;
+            string buff = rawValue.ToString();
+            if (buff.Equals("0"))
+            {
+                buff = "";
+            }
+            buff += "6";
+            if (buff.Length == 16)
+            {
+                rawValue = tempRawValue;
+                await DisplayAlert("Value is too much", "", "Ok");
+            }
+            else
+            {
+                rawValue = Convert.ToDouble(buff);
+            }
+            rawValueLabel.Text = rawValue.ToString();
         }
 
-        private void ButtonEight_Clicked(object sender, EventArgs e)
+        private async void ButtonFive_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            double tempRawValue = rawValue;
+            string buff = rawValue.ToString();
+            if (buff.Equals("0"))
+            {
+                buff = "";
+            }
+            buff += "5";
+            if (buff.Length == 16)
+            {
+                rawValue = tempRawValue;
+                await DisplayAlert("Value is too much", "", "Ok");
+            }
+            else
+            {
+                rawValue = Convert.ToDouble(buff);
+            }
+            rawValueLabel.Text = rawValue.ToString();
         }
 
-        private void ButtonSeven_Clicked(object sender, EventArgs e)
+        private async void ButtonFour_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            double tempRawValue = rawValue;
+            string buff = rawValue.ToString();
+            if (buff.Equals("0"))
+            {
+                buff = "";
+            }
+            buff += "4";
+            if (buff.Length == 16)
+            {
+                rawValue = tempRawValue;
+                await DisplayAlert("Value is too much", "", "Ok");
+            }
+            else
+            {
+                rawValue = Convert.ToDouble(buff);
+            }
+            rawValueLabel.Text = rawValue.ToString();
         }
 
-        private void ButtonSix_Clicked(object sender, EventArgs e)
+        private async void ButtonThree_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            double tempRawValue = rawValue;
+            string buff = rawValue.ToString();
+            if (buff.Equals("0"))
+            {
+                buff = "";
+            }
+            buff += "3";
+            if (buff.Length == 16)
+            {
+                rawValue = tempRawValue;
+                await DisplayAlert("Value is too much", "", "Ok");
+            }
+            else
+            {
+                rawValue = Convert.ToDouble(buff);
+            }
+            rawValueLabel.Text = rawValue.ToString();
         }
 
-        private void ButtonFive_Clicked(object sender, EventArgs e)
+        private async void ButtonTwo_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-        }
-
-        private void ButtonFour_Clicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void ButtonThree_Clicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void ButtonTwo_Clicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+            double tempRawValue = rawValue;
+            string buff = rawValue.ToString();
+            if (buff.Equals("0"))
+            {
+                buff = "";
+            }
+            buff += "2";
+            if (buff.Length == 16)
+            {
+                rawValue = tempRawValue;
+                await DisplayAlert("Value is too much", "", "Ok");
+            }
+            else
+            {
+                rawValue = Convert.ToDouble(buff);
+            }
+            rawValueLabel.Text = rawValue.ToString();
         }
 
         private async void ButtonOne_Clicked(object sender, EventArgs e)
@@ -483,11 +679,25 @@ namespace UnitConverter
 
         void rawPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            rawPicker.Title = rawPicker.Items[rawPicker.SelectedIndex];
+            if (rawPicker.Items.Count == 0)
+            {
+                rawPicker.Title = "0";
+            }
+            else
+            {
+                rawPicker.Title = rawPicker.Items[rawPicker.SelectedIndex];
+            }
         }
         void processedPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            processedPicker.Title = processedPicker.Items[processedPicker.SelectedIndex];
+            if (processedPicker.Items.Count == 0)
+            {
+                processedPicker.Title = "0";
+            }
+            else
+            {
+                processedPicker.Title = processedPicker.Items[processedPicker.SelectedIndex];
+            }
         }
         void categoryPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -535,6 +745,13 @@ namespace UnitConverter
                     break;
                 default:
                     break;
+            }
+
+            if (!rawPicker.IsVisible && !processedPicker.IsVisible && !imageSwitch.IsVisible)
+            {
+                rawPicker.IsVisible = true;
+                processedPicker.IsVisible = true;
+                imageSwitch.IsVisible = true;
             }
         }
     }
