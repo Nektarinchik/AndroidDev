@@ -13,7 +13,8 @@ namespace UnitConverter
     public partial class MainPage : ContentPage
     {
 
-        private Image imageSwitch;
+        //private Image imageSwitch;
+        private ImageButton buttonSwitch;
 
         private StringBuilder rawValueStr;
 
@@ -123,14 +124,16 @@ namespace UnitConverter
 
             processedPicker.SelectedIndexChanged += processedPicker_SelectedIndexChanged;
 
-            imageSwitch = new Image
+            buttonSwitch = new ImageButton
             {
                 Source = ImageSource.FromResource("UnitConverter.Images.switch.png"),
+                BackgroundColor = Color.White,
                 IsVisible = false
             };
+            buttonSwitch.Clicked += ButtonSwitch_Clicked;
 
             pickers.Children.Add(rawPicker, 0, 0);
-            pickers.Children.Add(imageSwitch, 1, 0);
+            pickers.Children.Add(buttonSwitch, 1, 0);
             pickers.Children.Add(processedPicker, 2, 0);
 
             Grid values = new Grid
@@ -401,6 +404,18 @@ namespace UnitConverter
             mainLayout.Children.Add(values);
             mainLayout.Children.Add(buttons);
             Content = mainLayout;
+        }
+
+        private void ButtonSwitch_Clicked(object sender, EventArgs e)
+        {
+            int temp = rawPicker.SelectedIndex;
+            rawPicker.SelectedIndex = processedPicker.SelectedIndex;
+            processedPicker.SelectedIndex = temp;
+            if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
+            {
+                rawPicker_SelectedIndexChanged(sender, e);
+                processedPicker_SelectedIndexChanged(sender, e);
+            }
         }
         private void ButtonPop_Clicked(object sender, EventArgs e)
         {
@@ -965,11 +980,11 @@ namespace UnitConverter
                     break;
             }
 
-            if (!rawPicker.IsVisible && !processedPicker.IsVisible && !imageSwitch.IsVisible)
+            if (!rawPicker.IsVisible && !processedPicker.IsVisible && !buttonSwitch.IsVisible)
             {
                 rawPicker.IsVisible = true;
                 processedPicker.IsVisible = true;
-                imageSwitch.IsVisible = true;
+                buttonSwitch.IsVisible = true;
             }
 
             rawValueStr.Clear();
