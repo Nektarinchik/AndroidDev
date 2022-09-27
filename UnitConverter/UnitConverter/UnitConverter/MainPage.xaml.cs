@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using UnitConverter.Converter;
+using Android.App;
+using Android.Content.PM;
 
 namespace UnitConverter
 {
@@ -52,18 +54,36 @@ namespace UnitConverter
 
         private Label rawValueLabel;
 
+        private Label equalLabel;
+
         private Label processedValueLabel;
+
+        private Label appName;
+
+        private StackLayout mainLayout;
+
+        private Grid buttons;
+
+        private Grid pickers;
+
+        private Grid values;
+
+        private double width = 0;
+
+        private double height = 0;
         public MainPage()
         {
             InitializeComponent();
+            width = Width;
+            height = Height;
         }
         protected override void OnAppearing()
         {
             rawValueStr = new StringBuilder();
-            StackLayout mainLayout = new StackLayout();
+            mainLayout = new StackLayout();
             mainLayout.Padding = new Thickness(5, 5, 5, 5);
 
-            Label appName = new Label
+            appName = new Label
             {
                 Text = "Converter",
                 HorizontalOptions = LayoutOptions.Center,
@@ -86,7 +106,7 @@ namespace UnitConverter
             categoryPicker.Items.Add("Speed");
             categoryPicker.SelectedIndexChanged += categoryPicker_SelectedIndexChanged;
 
-            Grid pickers = new Grid
+            pickers = new Grid
             {
                 RowDefinitions =
                 {
@@ -136,7 +156,7 @@ namespace UnitConverter
             pickers.Children.Add(buttonSwitch, 1, 0);
             pickers.Children.Add(processedPicker, 2, 0);
 
-            Grid values = new Grid
+            values = new Grid
             {
                 RowDefinitions =
                 {
@@ -157,7 +177,7 @@ namespace UnitConverter
                 CornerRadius = 8,
                 HorizontalOptions = LayoutOptions.Center,
             };
-            rawValueLabel = new Label 
+            rawValueLabel = new Label
             {
                 Text = "0",
                 FontAttributes = FontAttributes.Bold,
@@ -167,7 +187,7 @@ namespace UnitConverter
             };
             rawValue.Content = rawValueLabel;
 
-            Label equalLabel = new Label
+            equalLabel = new Label
             {
                 Text = "=",
                 FontAttributes = FontAttributes.Bold,
@@ -198,7 +218,7 @@ namespace UnitConverter
             values.Children.Add(equalLabel, 1, 0);
             values.Children.Add(processedValue, 2, 0);
 
-            Grid buttons = new Grid
+            buttons = new Grid
             {
                 RowDefinitions =
                 {
@@ -226,7 +246,7 @@ namespace UnitConverter
                 FontSize = 20.0,
                 TextColor = Color.Black,
                 Margin = new Thickness(0),
-                Padding = new Thickness(30)
+                Padding = new Thickness(0)
             };
             buttonOne.Clicked += ButtonOne_Clicked;
 
@@ -239,7 +259,7 @@ namespace UnitConverter
                 FontSize = 20.0,
                 TextColor = Color.Black,
                 Margin = new Thickness(0),
-                Padding = new Thickness(30)
+                Padding = new Thickness(0)
             };
             buttonTwo.Clicked += ButtonTwo_Clicked;
 
@@ -252,7 +272,7 @@ namespace UnitConverter
                 FontSize = 20.0,
                 TextColor = Color.Black,
                 Margin = new Thickness(0),
-                Padding = new Thickness(30)
+                Padding = new Thickness(0)
             };
             buttonThree.Clicked += ButtonThree_Clicked;
 
@@ -265,7 +285,7 @@ namespace UnitConverter
                 FontSize = 20.0,
                 TextColor = Color.Black,
                 Margin = new Thickness(0),
-                Padding = new Thickness(30)
+                Padding = new Thickness(0)
             };
             buttonFour.Clicked += ButtonFour_Clicked;
 
@@ -278,7 +298,7 @@ namespace UnitConverter
                 FontSize = 20.0,
                 TextColor = Color.Black,
                 Margin = new Thickness(0),
-                Padding = new Thickness(30)
+                Padding = new Thickness(0)
             };
             buttonFive.Clicked += ButtonFive_Clicked;
 
@@ -291,7 +311,7 @@ namespace UnitConverter
                 FontSize = 20.0,
                 TextColor = Color.Black,
                 Margin = new Thickness(0),
-                Padding = new Thickness(30)
+                Padding = new Thickness(0)
             };
             buttonSix.Clicked += ButtonSix_Clicked;
 
@@ -304,7 +324,7 @@ namespace UnitConverter
                 FontSize = 20.0,
                 TextColor = Color.Black,
                 Margin = new Thickness(0),
-                Padding = new Thickness(30)
+                Padding = new Thickness(0)
             };
             buttonSeven.Clicked += ButtonSeven_Clicked;
 
@@ -317,7 +337,7 @@ namespace UnitConverter
                 FontSize = 20.0,
                 TextColor = Color.Black,
                 Margin = new Thickness(0),
-                Padding = new Thickness(30)
+                Padding = new Thickness(0)
             };
             buttonEight.Clicked += ButtonEight_Clicked;
 
@@ -330,7 +350,7 @@ namespace UnitConverter
                 FontSize = 20.0,
                 TextColor = Color.Black,
                 Margin = new Thickness(0),
-                Padding = new Thickness(30)
+                Padding = new Thickness(0)
             };
             buttonNine.Clicked += ButtonNine_Clicked;
             
@@ -343,7 +363,7 @@ namespace UnitConverter
                 FontSize = 20.0,
                 TextColor = Color.Black,
                 Margin = new Thickness(0),
-                Padding = new Thickness(30)
+                Padding = new Thickness(0)
             };
             buttonPoint.Clicked += ButtonPoint_Clicked;
 
@@ -356,7 +376,7 @@ namespace UnitConverter
                 FontSize = 20.0,
                 TextColor = Color.Black,
                 Margin = new Thickness(0),
-                Padding = new Thickness(30)
+                Padding = new Thickness(0)
             };
             buttonZero.Clicked += ButtonZero_Clicked;
 
@@ -369,7 +389,7 @@ namespace UnitConverter
                 FontSize = 20.0,
                 TextColor = Color.Black,
                 Margin = new Thickness(0),
-                Padding = new Thickness(30)
+                Padding = new Thickness(0)
             };
             buttonClearAll.Clicked += ButtonClearAll_Clicked;
 
@@ -406,6 +426,55 @@ namespace UnitConverter
             Content = mainLayout;
         }
 
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+
+                UpdateLayout();
+            }
+        }
+
+        private void UpdateLayout()
+        {
+            if (Width > Height)
+            {
+                SetupLandscapeLayout();
+            }
+            else
+            {
+                SetupPortraitLayout();
+            }
+        }
+        private void SetupLandscapeLayout()
+        {
+            mainLayout.Orientation = StackOrientation.Horizontal;
+            StackLayout leftPart = new StackLayout();
+            leftPart.Orientation = StackOrientation.Vertical;
+            leftPart.Children.Add(appName);
+            leftPart.Children.Add(categoryPicker);
+            leftPart.Children.Add(pickers);
+            leftPart.Children.Add(values);
+            mainLayout.Children.Clear();
+            mainLayout.Children.Add(buttons);
+            mainLayout.Children.Add(leftPart);
+            Content = mainLayout;
+        }
+        private void SetupPortraitLayout()
+        {
+            mainLayout.Orientation = StackOrientation.Vertical;
+            mainLayout.Children.Clear();
+            mainLayout.Children.Add(appName);
+            mainLayout.Children.Add(categoryPicker);
+            mainLayout.Children.Add(pickers);
+            mainLayout.Children.Add(values);
+            mainLayout.Children.Add(buttons);
+            Content = mainLayout;
+        }
         private void ButtonSwitch_Clicked(object sender, EventArgs e)
         {
             int temp = rawPicker.SelectedIndex;

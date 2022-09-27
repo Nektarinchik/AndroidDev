@@ -13,3 +13,7 @@ C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitCon
 C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\obj\Debug\netstandard2.0\refint\UnitConverter.dll
 C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\obj\Debug\netstandard2.0\UnitConverter.pdb
 C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\obj\Debug\netstandard2.0\ref\UnitConverter.dll
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\bin\Debug\netstandard2.0\Mono.Android.dll
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\bin\Debug\netstandard2.0\Mono.Android.pdb
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\bin\Debug\netstandard2.0\Mono.Android.xml
+C:\Users\Nektarinchik\Desktop\Git\AndroidDev\UnitConverter\UnitConverter\UnitConverter\obj\Debug\netstandard2.0\UnitConverter.csproj.CopyComplete
