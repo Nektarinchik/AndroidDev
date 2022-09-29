@@ -574,7 +574,6 @@ namespace UnitConverter
                 }
             }
         }
-
         private async void ButtonCopy_Clicked(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(processedValueStr))
@@ -582,16 +581,28 @@ namespace UnitConverter
             else
                 await Clipboard.SetTextAsync("0");
         }
-        private void ButtonSwitch_Clicked(object sender, EventArgs e)
+        private async void ButtonSwitch_Clicked(object sender, EventArgs e)
         {
-            int temp = rawPicker.SelectedIndex;
-            rawPicker.SelectedIndex = processedPicker.SelectedIndex;
-            processedPicker.SelectedIndex = temp;
-            if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
+            if (!processedValueStr.Contains("E"))
             {
-                rawPicker_SelectedIndexChanged(sender, e);
-                processedPicker_SelectedIndexChanged(sender, e);
+                processedPicker.SelectedIndexChanged -= processedPicker_SelectedIndexChanged;
+                rawPicker.SelectedIndexChanged -= rawPicker_SelectedIndexChanged;
+                int temp = processedPicker.SelectedIndex;
+                processedPicker.SelectedIndex = rawPicker.SelectedIndex;
+                rawPicker.SelectedIndex = temp;
+                processedPicker.SelectedIndexChanged += processedPicker_SelectedIndexChanged;
+                rawPicker.SelectedIndexChanged += rawPicker_SelectedIndexChanged;
+                rawValueStr.Clear();
+                rawValueStr.Append(processedValueStr);
+
+                if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
+                {
+                    rawPicker_SelectedIndexChanged(sender, e);
+                    processedPicker_SelectedIndexChanged(sender, e);
+                }
             }
+            else
+                await DisplayAlert("Too much value", "", "Ok");
         }
         private void ButtonPop_Clicked(object sender, EventArgs e)
         {
@@ -1092,6 +1103,7 @@ namespace UnitConverter
                     );
                 processedValueStr = processedValue.ToString();
                 processedValueLabel.Text = processedValueStr;
+                rawValueLabel.Text = rawValueStr.ToString();
             }
         }
         void processedPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -1116,6 +1128,7 @@ namespace UnitConverter
                     );
                 processedValueStr = processedValue.ToString();
                 processedValueLabel.Text = processedValueStr;
+                rawValueLabel.Text = rawValueStr.ToString();
             }
         }
         void categoryPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -1174,6 +1187,7 @@ namespace UnitConverter
             }
 
             rawValueStr.Clear();
+            rawValueStr.Append("0");
             processedValueStr = "";
             rawValueLabel.Text = "0";
             processedValueLabel.Text = "0";
