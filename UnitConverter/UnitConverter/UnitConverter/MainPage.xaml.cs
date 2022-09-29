@@ -16,7 +16,7 @@ namespace UnitConverter
     {
 
         //private Image imageSwitch;
-        private ImageButton buttonSwitch;
+        private String processedValueStr;
 
         private StringBuilder rawValueStr;
 
@@ -50,7 +50,13 @@ namespace UnitConverter
 
         private Button buttonClearAll;
 
+        private Button buttonCopy;
+
+        private Button buttonPaste;
+
         private ImageButton buttonPop;
+
+        private ImageButton buttonSwitch;
 
         private Label rawValueLabel;
 
@@ -68,6 +74,8 @@ namespace UnitConverter
 
         private Grid values;
 
+        private Grid copyPasteGrid;
+
         private double width = 0;
 
         private double height = 0;
@@ -80,8 +88,11 @@ namespace UnitConverter
         protected override void OnAppearing()
         {
             rawValueStr = new StringBuilder();
-            mainLayout = new StackLayout();
-            mainLayout.Padding = new Thickness(5, 5, 5, 5);
+            mainLayout = new StackLayout
+            {
+                Padding = new Thickness(5, 5, 5, 5),
+                BackgroundColor = Color.White,
+            };
 
             appName = new Label
             {
@@ -166,7 +177,7 @@ namespace UnitConverter
                 {
                     new ColumnDefinition(),
                     new ColumnDefinition(),
-                    new ColumnDefinition()
+                    new ColumnDefinition(),
                 }
             };
 
@@ -176,6 +187,7 @@ namespace UnitConverter
                 BackgroundColor = Color.FromHex("#e1e1e1"),
                 CornerRadius = 8,
                 HorizontalOptions = LayoutOptions.Center,
+                Padding = new Thickness(15),
             };
             rawValueLabel = new Label
             {
@@ -183,7 +195,7 @@ namespace UnitConverter
                 FontAttributes = FontAttributes.Bold,
                 FontSize = 20.0,
                 TextColor = Color.Black,
-                LineBreakMode = LineBreakMode.HeadTruncation
+                LineBreakMode = LineBreakMode.HeadTruncation,
             };
             rawValue.Content = rawValueLabel;
 
@@ -203,6 +215,7 @@ namespace UnitConverter
                 BackgroundColor = Color.FromHex("#e1e1e1"),
                 CornerRadius = 8,
                 HorizontalOptions = LayoutOptions.Center,
+                Padding = new Thickness(15),
             };
             processedValueLabel = new Label
             {
@@ -210,13 +223,55 @@ namespace UnitConverter
                 FontAttributes = FontAttributes.Bold,
                 FontSize = 20.0,
                 TextColor = Color.Black,
-                LineBreakMode = LineBreakMode.HeadTruncation
+                LineBreakMode = LineBreakMode.HeadTruncation,
             };
             processedValue.Content = processedValueLabel;
 
             values.Children.Add(rawValue, 0, 0);
             values.Children.Add(equalLabel, 1, 0);
             values.Children.Add(processedValue, 2, 0);
+
+            copyPasteGrid = new Grid
+            {
+                RowDefinitions =
+                {
+                    new RowDefinition(),
+                },
+                ColumnDefinitions =
+                {
+                    new ColumnDefinition(),
+                    new ColumnDefinition(),
+                }
+            };
+
+            buttonCopy = new Button
+            {
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
+                Text = "Copy",
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                Margin = new Thickness(0),
+                Padding = new Thickness(0)
+            };
+            buttonCopy.Clicked += ButtonCopy_Clicked;
+
+            buttonPaste = new Button
+            {
+                BorderColor = Color.Gray,
+                BackgroundColor = Color.FromHex("#e1e1e1"),
+                Text = "Paste",
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20.0,
+                TextColor = Color.Black,
+                Margin = new Thickness(0),
+                Padding = new Thickness(0)
+            };
+            buttonPaste.Clicked += ButtonPaste_Clicked;
+
+            copyPasteGrid.Children.Add(buttonPaste, 0, 0);
+            copyPasteGrid.Children.Add(buttonCopy,  1, 0);
 
             buttons = new Grid
             {
@@ -422,10 +477,10 @@ namespace UnitConverter
             mainLayout.Children.Add(categoryPicker);
             mainLayout.Children.Add(pickers);
             mainLayout.Children.Add(values);
+            mainLayout.Children.Add(copyPasteGrid);
             mainLayout.Children.Add(buttons);
             Content = mainLayout;
         }
-
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height);
@@ -459,6 +514,7 @@ namespace UnitConverter
             leftPart.Children.Add(categoryPicker);
             leftPart.Children.Add(pickers);
             leftPart.Children.Add(values);
+            leftPart.Children.Add(copyPasteGrid);
             mainLayout.Children.Clear();
             mainLayout.Children.Add(buttons);
             mainLayout.Children.Add(leftPart);
@@ -472,8 +528,59 @@ namespace UnitConverter
             mainLayout.Children.Add(categoryPicker);
             mainLayout.Children.Add(pickers);
             mainLayout.Children.Add(values);
+            mainLayout.Children.Add(copyPasteGrid);
             mainLayout.Children.Add(buttons);
             Content = mainLayout;
+        }
+
+        private async void ButtonPaste_Clicked(object sender, EventArgs e)
+        {
+            if (Clipboard.HasText)
+            {
+                try
+                {
+                    string buff = await Clipboard.GetTextAsync();
+                    Convert.ToDouble(buff);
+                    if (buff.Length > 15 || buff.Contains("E"))
+                        throw new OverflowException();
+                    rawValueStr.Clear();
+                    rawValueStr.Append(buff);
+                    if (categoryPicker.SelectedIndex != -1 && rawPicker.SelectedIndex != -1)
+                    {
+                        ICategoryConverter categoryConverter =
+                        CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
+                        categoryConverter.UnitConverter =
+                            UnitConverterFactory.CreateUnitConverter(rawPicker.Items[rawPicker.SelectedIndex]);
+                        double processedValue = categoryConverter.Convert(
+                            processedPicker.Items[processedPicker.SelectedIndex],
+                            rawValueStr.ToString()
+                            );
+                        processedValueStr = processedValue.ToString();
+                        processedValueLabel.Text = processedValueStr;
+                        rawValueLabel.Text = rawValueStr.ToString();
+                    }
+                    else
+                    {
+                        rawValueLabel.Text = rawValueStr.ToString();
+                    }
+                }
+                catch (FormatException)
+                {
+                    await DisplayAlert("Incorrect value", "", "Ok");
+                }
+                catch (OverflowException)
+                {
+                    await DisplayAlert("Too much value", "", "Ok");
+                }
+            }
+        }
+
+        private async void ButtonCopy_Clicked(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(processedValueStr))
+                await Clipboard.SetTextAsync(processedValueStr);
+            else
+                await Clipboard.SetTextAsync("0");
         }
         private void ButtonSwitch_Clicked(object sender, EventArgs e)
         {
@@ -509,7 +616,8 @@ namespace UnitConverter
                             processedPicker.Items[processedPicker.SelectedIndex],
                             rawValueStr.ToString()
                             );
-                        processedValueLabel.Text = processedValue.ToString();
+                        processedValueStr = processedValue.ToString();
+                        processedValueLabel.Text = processedValueStr;
                     }
                     catch (ArgumentException)
                     {
@@ -525,6 +633,7 @@ namespace UnitConverter
         private void ButtonClearAll_Clicked(object sender, EventArgs e)
         {
             rawValueStr.Clear();
+            processedValueStr = "";
             rawValueLabel.Text = "0";
             processedValueLabel.Text = "0";
         }
@@ -535,13 +644,9 @@ namespace UnitConverter
             {
                 if (rawValueStr.Length == 15)
                 {
-                    await DisplayAlert("Value is too much", "", "Ok");
+                    await DisplayAlert("too much Value", "", "Ok");
                 }
-                //else if (rawValueStr.Equals("0"))
-                //{
-                //    rawValueStr.Append(".");
-                //    rawValueLabel.Text = rawValueStr.ToString();
-                //}
+                else if (rawValueStr.Length == 14) return;
                 else if (string.IsNullOrEmpty(rawValueStr.ToString()))
                 {
                     rawValueStr.Append("0.");
@@ -581,7 +686,7 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Value is too much", "", "Ok");
+                await DisplayAlert("Too much value", "", "Ok");
             }
             rawValueLabel.Text = rawValueStr.ToString();
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
@@ -594,7 +699,8 @@ namespace UnitConverter
                     processedPicker.Items[processedPicker.SelectedIndex],
                     rawValueStr.ToString()
                     );
-                processedValueLabel.Text = processedValue.ToString();
+                processedValueStr = processedValue.ToString();
+                processedValueLabel.Text = processedValueStr;
             }
         }
         private async void ButtonNine_Clicked(object sender, EventArgs e)
@@ -620,7 +726,7 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Value is too much", "", "Ok");
+                await DisplayAlert("Too much value", "", "Ok");
             }
             rawValueLabel.Text = rawValueStr.ToString();
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
@@ -633,7 +739,8 @@ namespace UnitConverter
                     processedPicker.Items[processedPicker.SelectedIndex],
                     rawValueStr.ToString()
                     );
-                processedValueLabel.Text = processedValue.ToString();
+                processedValueStr = processedValue.ToString();
+                processedValueLabel.Text = processedValueStr;
             }
         }
         private async void ButtonEight_Clicked(object sender, EventArgs e)
@@ -659,7 +766,7 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Value is too much", "", "Ok");
+                await DisplayAlert("Too much value", "", "Ok");
             }
             rawValueLabel.Text = rawValueStr.ToString();
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
@@ -672,7 +779,8 @@ namespace UnitConverter
                     processedPicker.Items[processedPicker.SelectedIndex],
                     rawValueStr.ToString()
                     );
-                processedValueLabel.Text = processedValue.ToString();
+                processedValueStr = processedValue.ToString();
+                processedValueLabel.Text = processedValueStr;
             }
         }
 
@@ -699,7 +807,7 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Value is too much", "", "Ok");
+                await DisplayAlert("Too much value", "", "Ok");
             }
             rawValueLabel.Text = rawValueStr.ToString();
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
@@ -712,7 +820,8 @@ namespace UnitConverter
                     processedPicker.Items[processedPicker.SelectedIndex],
                     rawValueStr.ToString()
                     );
-                processedValueLabel.Text = processedValue.ToString();
+                processedValueStr = processedValue.ToString();
+                processedValueLabel.Text = processedValueStr;
             }
         }
 
@@ -739,7 +848,7 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Value is too much", "", "Ok");
+                await DisplayAlert("Too much value", "", "Ok");
             }
             rawValueLabel.Text = rawValueStr.ToString();
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
@@ -752,7 +861,8 @@ namespace UnitConverter
                     processedPicker.Items[processedPicker.SelectedIndex],
                     rawValueStr.ToString()
                     );
-                processedValueLabel.Text = processedValue.ToString();
+                processedValueStr = processedValue.ToString();
+                processedValueLabel.Text = processedValueStr;
             }
         }
 
@@ -779,7 +889,7 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Value is too much", "", "Ok");
+                await DisplayAlert("Too much value", "", "Ok");
             }
             rawValueLabel.Text = rawValueStr.ToString();
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
@@ -792,7 +902,8 @@ namespace UnitConverter
                     processedPicker.Items[processedPicker.SelectedIndex],
                     rawValueStr.ToString()
                     );
-                processedValueLabel.Text = processedValue.ToString();
+                processedValueStr = processedValue.ToString();
+                processedValueLabel.Text = processedValueStr;
             }
         }
 
@@ -819,7 +930,7 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Value is too much", "", "Ok");
+                await DisplayAlert("Too much value", "", "Ok");
             }
             rawValueLabel.Text = rawValueStr.ToString();
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
@@ -832,7 +943,8 @@ namespace UnitConverter
                     processedPicker.Items[processedPicker.SelectedIndex],
                     rawValueStr.ToString()
                     );
-                processedValueLabel.Text = processedValue.ToString();
+                processedValueStr = processedValue.ToString();
+                processedValueLabel.Text = processedValueStr;
             }
         }
 
@@ -859,7 +971,7 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Value is too much", "", "Ok");
+                await DisplayAlert("Too much value", "", "Ok");
             }
             rawValueLabel.Text = rawValueStr.ToString();
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
@@ -872,7 +984,8 @@ namespace UnitConverter
                     processedPicker.Items[processedPicker.SelectedIndex],
                     rawValueStr.ToString()
                     );
-                processedValueLabel.Text = processedValue.ToString();
+                processedValueStr = processedValue.ToString();
+                processedValueLabel.Text = processedValueStr;
             }
         }
 
@@ -899,7 +1012,7 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Value is too much", "", "Ok");
+                await DisplayAlert("Too much value", "", "Ok");
             }
             rawValueLabel.Text = rawValueStr.ToString();
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
@@ -912,7 +1025,8 @@ namespace UnitConverter
                     processedPicker.Items[processedPicker.SelectedIndex],
                     rawValueStr.ToString()
                     );
-                processedValueLabel.Text = processedValue.ToString();
+                processedValueStr = processedValue.ToString();
+                processedValueLabel.Text = processedValueStr;
             }
         }
 
@@ -939,7 +1053,7 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Value is too much", "", "Ok");
+                await DisplayAlert("Too much value", "", "Ok");
             }
             rawValueLabel.Text = rawValueStr.ToString();
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1) 
@@ -952,7 +1066,8 @@ namespace UnitConverter
                     processedPicker.Items[processedPicker.SelectedIndex],
                     rawValueStr.ToString()
                     );
-                processedValueLabel.Text = processedValue.ToString();
+                processedValueStr = processedValue.ToString();
+                processedValueLabel.Text = processedValueStr;
             }
         }
         void rawPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -975,7 +1090,8 @@ namespace UnitConverter
                     processedPicker.Items[processedPicker.SelectedIndex],
                     rawValueStr.ToString()
                     );
-                processedValueLabel.Text = processedValue.ToString();
+                processedValueStr = processedValue.ToString();
+                processedValueLabel.Text = processedValueStr;
             }
         }
         void processedPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -998,7 +1114,8 @@ namespace UnitConverter
                     processedPicker.Items[processedPicker.SelectedIndex],
                     rawValueStr.ToString()
                     );
-                processedValueLabel.Text = processedValue.ToString();
+                processedValueStr = processedValue.ToString();
+                processedValueLabel.Text = processedValueStr;
             }
         }
         void categoryPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -1057,6 +1174,7 @@ namespace UnitConverter
             }
 
             rawValueStr.Clear();
+            processedValueStr = "";
             rawValueLabel.Text = "0";
             processedValueLabel.Text = "0";
         }
