@@ -9,6 +9,7 @@ using Xamarin.Essentials;
 using UnitConverter.Converter;
 using Android.App;
 using Android.Content.PM;
+using ControlSamples.Effects;
 
 namespace UnitConverter
 {
@@ -83,6 +84,8 @@ namespace UnitConverter
         private double width = 0;
 
         private double height = 0;
+
+        private int cursorPosition = 0;
         public MainPage()
         {
             InitializeComponent();
@@ -195,12 +198,20 @@ namespace UnitConverter
             //};
             rawValueEntry = new Entry
             {
-                Text = "0",
+                Placeholder = "0",
+                Text = "",
                 FontAttributes = FontAttributes.Bold,
                 FontSize = 20.0,
                 TextColor = Color.Black,
                 HorizontalTextAlignment = TextAlignment.Center
             };
+            rawValueEntry.Focused += (object sender, FocusEventArgs e) =>
+            {
+                cursorPosition = rawValueEntry.CursorPosition;
+            };
+            rawValueEntry.Unfocused += (object sender, FocusEventArgs e) =>
+            { };
+            rawValueEntry.Effects.Add(new NoKeyboardEffect());
             //rawValueLabel = new Label
             //{
             //    Text = "0",
@@ -230,11 +241,13 @@ namespace UnitConverter
             //};
             processedValueEntry = new Entry
             {
-                Text = "0",
+                Placeholder = "0",
+                Text = "",
                 FontAttributes = FontAttributes.Bold,
                 FontSize = 20.0,
                 TextColor = Color.Black,
-                HorizontalTextAlignment = TextAlignment.Center
+                HorizontalTextAlignment = TextAlignment.Center,
+                IsReadOnly = true
             };
             //processedValueLabel = new Label
             //{
@@ -657,8 +670,8 @@ namespace UnitConverter
                     catch (ArgumentException)
                     {
                         rawValueStr.Clear();
-                        rawValueEntry.Text = "0";
-                        processedValueEntry.Text = "0";
+                        rawValueEntry.Text = "";
+                        processedValueEntry.Text = "";
                         //rawValueLabel.Text = "0";
                         //processedValueLabel.Text = "0";
                     }
@@ -671,8 +684,9 @@ namespace UnitConverter
         {
             rawValueStr.Clear();
             processedValueStr = "";
-            rawValueEntry.Text = "0";
-            processedValueEntry.Text = "0";
+            rawValueEntry.Text = "";
+            processedValueEntry.Text = "";
+            cursorPosition = 0;
             //rawValueLabel.Text = "0";
             //processedValueLabel.Text = "0";
         }
@@ -706,22 +720,24 @@ namespace UnitConverter
         }
         private async void ButtonZero_Clicked(object sender, EventArgs e)
         {
+            rawValueEntry.CursorPosition = cursorPosition;
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
                 rawValueStr.Clear();
+                rawValueEntry.CursorPosition = 0;
+                cursorPosition = 0;
             }
 
-            //if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             if (rawValueEntry.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
                 rawValueStr.Append(".");
-                rawValueStr.Append("0");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "0");
             }
             else
             {
-                rawValueStr.Append("0");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "0");
             }
 
             if (rawValueStr.Length == 16)
@@ -730,8 +746,9 @@ namespace UnitConverter
                 rawValueStr.Append(buff);
                 await DisplayAlert("Too much value", "", "Ok");
             }
+            cursorPosition = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
-            //rawValueLabel.Text = rawValueStr.ToString();
+            rawValueEntry.CursorPosition = cursorPosition;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
                 ICategoryConverter categoryConverter =
@@ -744,27 +761,29 @@ namespace UnitConverter
                     );
                 processedValueStr = processedValue.ToString();
                 processedValueEntry.Text = processedValueStr;
-                //processedValueLabel.Text = processedValueStr;
             }
+            rawValueEntry.Unfocus();
         }
         private async void ButtonNine_Clicked(object sender, EventArgs e)
         {
+            rawValueEntry.CursorPosition = cursorPosition;
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
                 rawValueStr.Clear();
+                rawValueEntry.CursorPosition = 0;
+                cursorPosition = 0;
             }
 
-            //if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             if (rawValueEntry.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
                 rawValueStr.Append(".");
-                rawValueStr.Append("9");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "9");
             }
             else
             {
-                rawValueStr.Append("9");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "9");
             }
 
             if (rawValueStr.Length == 16)
@@ -773,8 +792,9 @@ namespace UnitConverter
                 rawValueStr.Append(buff);
                 await DisplayAlert("Too much value", "", "Ok");
             }
+            cursorPosition = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
-            //rawValueLabel.Text = rawValueStr.ToString();
+            rawValueEntry.CursorPosition = cursorPosition;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
                 ICategoryConverter categoryConverter =
@@ -787,27 +807,29 @@ namespace UnitConverter
                     );
                 processedValueStr = processedValue.ToString();
                 processedValueEntry.Text = processedValueStr;
-                //processedValueLabel.Text = processedValueStr;
             }
+            rawValueEntry.Unfocus();
         }
         private async void ButtonEight_Clicked(object sender, EventArgs e)
         {
+            rawValueEntry.CursorPosition = cursorPosition;
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
                 rawValueStr.Clear();
+                rawValueEntry.CursorPosition = 0;
+                cursorPosition = 0;
             }
 
-            //if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             if (rawValueEntry.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
                 rawValueStr.Append(".");
-                rawValueStr.Append("8");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "8");
             }
             else
             {
-                rawValueStr.Append("8");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "8");
             }
 
             if (rawValueStr.Length == 16)
@@ -816,8 +838,9 @@ namespace UnitConverter
                 rawValueStr.Append(buff);
                 await DisplayAlert("Too much value", "", "Ok");
             }
+            cursorPosition = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
-            //rawValueLabel.Text = rawValueStr.ToString();
+            rawValueEntry.CursorPosition = cursorPosition;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
                 ICategoryConverter categoryConverter =
@@ -830,28 +853,30 @@ namespace UnitConverter
                     );
                 processedValueStr = processedValue.ToString();
                 processedValueEntry.Text = processedValueStr;
-                //processedValueLabel.Text = processedValueStr;
             }
+            rawValueEntry.Unfocus();
         }
 
         private async void ButtonSeven_Clicked(object sender, EventArgs e)
         {
+            rawValueEntry.CursorPosition = cursorPosition;
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
                 rawValueStr.Clear();
+                rawValueEntry.CursorPosition = 0;
+                cursorPosition = 0;
             }
 
-            //if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             if (rawValueEntry.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
                 rawValueStr.Append(".");
-                rawValueStr.Append("7");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "7");
             }
             else
             {
-                rawValueStr.Append("7");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "7");
             }
 
             if (rawValueStr.Length == 16)
@@ -860,8 +885,9 @@ namespace UnitConverter
                 rawValueStr.Append(buff);
                 await DisplayAlert("Too much value", "", "Ok");
             }
+            cursorPosition = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
-            //rawValueLabel.Text = rawValueStr.ToString();
+            rawValueEntry.CursorPosition = cursorPosition;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
                 ICategoryConverter categoryConverter =
@@ -874,28 +900,30 @@ namespace UnitConverter
                     );
                 processedValueStr = processedValue.ToString();
                 processedValueEntry.Text = processedValueStr;
-                //processedValueLabel.Text = processedValueStr;
             }
+            rawValueEntry.Unfocus();
         }
 
         private async void ButtonSix_Clicked(object sender, EventArgs e)
         {
+            rawValueEntry.CursorPosition = cursorPosition;
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
                 rawValueStr.Clear();
+                rawValueEntry.CursorPosition = 0;
+                cursorPosition = 0;
             }
 
-            //if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             if (rawValueEntry.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
                 rawValueStr.Append(".");
-                rawValueStr.Append("6");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "6");
             }
             else
             {
-                rawValueStr.Append("6");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "6");
             }
 
             if (rawValueStr.Length == 16)
@@ -904,8 +932,9 @@ namespace UnitConverter
                 rawValueStr.Append(buff);
                 await DisplayAlert("Too much value", "", "Ok");
             }
+            cursorPosition = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
-            //rawValueLabel.Text = rawValueStr.ToString();
+            rawValueEntry.CursorPosition = cursorPosition;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
                 ICategoryConverter categoryConverter =
@@ -918,28 +947,30 @@ namespace UnitConverter
                     );
                 processedValueStr = processedValue.ToString();
                 processedValueEntry.Text = processedValueStr;
-                //processedValueLabel.Text = processedValueStr;
             }
+            rawValueEntry.Unfocus();
         }
 
         private async void ButtonFive_Clicked(object sender, EventArgs e)
         {
+            rawValueEntry.CursorPosition = cursorPosition;
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
                 rawValueStr.Clear();
+                rawValueEntry.CursorPosition = 0;
+                cursorPosition = 0;
             }
 
-            //if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             if (rawValueEntry.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
                 rawValueStr.Append(".");
-                rawValueStr.Append("5");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "5");
             }
             else
             {
-                rawValueStr.Append("5");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "5");
             }
 
             if (rawValueStr.Length == 16)
@@ -948,8 +979,9 @@ namespace UnitConverter
                 rawValueStr.Append(buff);
                 await DisplayAlert("Too much value", "", "Ok");
             }
+            cursorPosition = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
-            //rawValueLabel.Text = rawValueStr.ToString();
+            rawValueEntry.CursorPosition = cursorPosition;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
                 ICategoryConverter categoryConverter =
@@ -962,28 +994,30 @@ namespace UnitConverter
                     );
                 processedValueStr = processedValue.ToString();
                 processedValueEntry.Text = processedValueStr;
-                //processedValueLabel.Text = processedValueStr;
             }
+            rawValueEntry.Unfocus();
         }
 
         private async void ButtonFour_Clicked(object sender, EventArgs e)
         {
+            rawValueEntry.CursorPosition = cursorPosition;
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
                 rawValueStr.Clear();
+                rawValueEntry.CursorPosition = 0;
+                cursorPosition = 0;
             }
 
-            //if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             if (rawValueEntry.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
                 rawValueStr.Append(".");
-                rawValueStr.Append("4");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "4");
             }
             else
             {
-                rawValueStr.Append("4");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "4");
             }
 
             if (rawValueStr.Length == 16)
@@ -992,8 +1026,9 @@ namespace UnitConverter
                 rawValueStr.Append(buff);
                 await DisplayAlert("Too much value", "", "Ok");
             }
+            cursorPosition = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
-            //rawValueLabel.Text = rawValueStr.ToString();
+            rawValueEntry.CursorPosition = cursorPosition;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
                 ICategoryConverter categoryConverter =
@@ -1006,28 +1041,30 @@ namespace UnitConverter
                     );
                 processedValueStr = processedValue.ToString();
                 processedValueEntry.Text = processedValueStr;
-                //processedValueLabel.Text = processedValueStr;
             }
+            rawValueEntry.Unfocus();
         }
 
         private async void ButtonThree_Clicked(object sender, EventArgs e)
         {
+            rawValueEntry.CursorPosition = cursorPosition;
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
                 rawValueStr.Clear();
+                rawValueEntry.CursorPosition = 0;
+                cursorPosition = 0;
             }
 
-            //if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             if (rawValueEntry.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
                 rawValueStr.Append(".");
-                rawValueStr.Append("3");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "3");
             }
             else
             {
-                rawValueStr.Append("3");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "3");
             }
 
             if (rawValueStr.Length == 16)
@@ -1036,8 +1073,9 @@ namespace UnitConverter
                 rawValueStr.Append(buff);
                 await DisplayAlert("Too much value", "", "Ok");
             }
+            cursorPosition = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
-            //rawValueLabel.Text = rawValueStr.ToString();
+            rawValueEntry.CursorPosition = cursorPosition;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
                 ICategoryConverter categoryConverter =
@@ -1050,28 +1088,30 @@ namespace UnitConverter
                     );
                 processedValueStr = processedValue.ToString();
                 processedValueEntry.Text = processedValueStr;
-                //processedValueLabel.Text = processedValueStr;
             }
+            rawValueEntry.Unfocus();
         }
 
         private async void ButtonTwo_Clicked(object sender, EventArgs e)
         {
+            rawValueEntry.CursorPosition = cursorPosition;
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
                 rawValueStr.Clear();
+                rawValueEntry.CursorPosition = 0;
+                cursorPosition = 0;
             }
 
-            //if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             if (rawValueEntry.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
                 rawValueStr.Append(".");
-                rawValueStr.Append("2");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "2");
             }
             else
             {
-                rawValueStr.Append("2");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "2");
             }
 
             if (rawValueStr.Length == 16)
@@ -1080,8 +1120,9 @@ namespace UnitConverter
                 rawValueStr.Append(buff);
                 await DisplayAlert("Too much value", "", "Ok");
             }
+            cursorPosition = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
-            //rawValueLabel.Text = rawValueStr.ToString();
+            rawValueEntry.CursorPosition = cursorPosition;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
                 ICategoryConverter categoryConverter =
@@ -1094,28 +1135,30 @@ namespace UnitConverter
                     );
                 processedValueStr = processedValue.ToString();
                 processedValueEntry.Text = processedValueStr;
-                //processedValueLabel.Text = processedValueStr;
             }
+            rawValueEntry.Unfocus();
         }
 
         private async void ButtonOne_Clicked(object sender, EventArgs e)
         {
+            rawValueEntry.CursorPosition = cursorPosition;
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
             {
                 buff = "";
                 rawValueStr.Clear();
+                                rawValueEntry.CursorPosition = 0;
+                cursorPosition = 0;
             }
 
-            //if (rawValueLabel.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             if (rawValueEntry.Text.Contains(".") && !rawValueStr.ToString().Contains("."))
             {
                 rawValueStr.Append(".");
-                rawValueStr.Append("1");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "1");
             }
             else
             {
-                rawValueStr.Append("1");
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "1");
             }
 
             if (rawValueStr.Length == 16)
@@ -1124,9 +1167,10 @@ namespace UnitConverter
                 rawValueStr.Append(buff);
                 await DisplayAlert("Too much value", "", "Ok");
             }
-            //rawValueLabel.Text = rawValueStr.ToString();
+            cursorPosition = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
-            if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1) 
+            rawValueEntry.CursorPosition = cursorPosition;
+            if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
                 ICategoryConverter categoryConverter =
                     CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
@@ -1138,8 +1182,8 @@ namespace UnitConverter
                     );
                 processedValueStr = processedValue.ToString();
                 processedValueEntry.Text = processedValueStr;
-                //processedValueLabel.Text = processedValueStr;
             }
+            rawValueEntry.Unfocus();
         }
         void rawPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1253,8 +1297,8 @@ namespace UnitConverter
             rawValueStr.Clear();
             rawValueStr.Append("0");
             processedValueStr = "";
-            rawValueEntry.Text = "0";
-            processedValueEntry.Text = "0";
+            rawValueEntry.Text = "";
+            processedValueEntry.Text = "";
             //rawValueLabel.Text = "0";
             //processedValueLabel.Text = "0";
         }
