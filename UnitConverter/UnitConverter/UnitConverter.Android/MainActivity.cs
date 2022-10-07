@@ -24,5 +24,6 @@ namespace UnitConverter.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
     }
 }
