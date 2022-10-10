@@ -4,21 +4,14 @@ using System.Text;
 
 namespace UnitConverter.Converter
 {
-    internal sealed class SpeedConverter : ICategoryConverter
+    internal sealed class SpeedConverter : CategoryConverter
     {
-        public SpeedConverter()
-        {
-            _unitConverter = null;
-        }
-        public double Convert(string processedUnit, string rawValue)
+        public SpeedConverter() :
+            base()
+        { }
+        public override double Convert(string processedUnit, string rawValue)
         {
             return _unitConverter.Convert(processedUnit, rawValue);
         }
-        public IUnitConverter UnitConverter
-        {
-            set { _unitConverter = value; }
-        }
-
-        private IUnitConverter _unitConverter;
     }
 }

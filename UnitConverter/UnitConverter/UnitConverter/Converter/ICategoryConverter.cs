@@ -4,9 +4,18 @@ using System.Text;
 
 namespace UnitConverter.Converter
 {
-    internal interface ICategoryConverter
+    internal abstract class CategoryConverter
     {
-        double Convert(string processedUnit, string rawValue);
-        IUnitConverter UnitConverter { set; }
+        public CategoryConverter()
+        {
+            UnitConverter = null;
+        }
+        public abstract double Convert(string processedUnit, string rawValue);
+        public IUnitConverter UnitConverter
+        {
+            set { _unitConverter = value; }
+        }
+
+        protected IUnitConverter _unitConverter;
     }
 }

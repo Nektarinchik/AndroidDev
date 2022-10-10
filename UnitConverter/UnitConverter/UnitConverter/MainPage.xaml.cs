@@ -532,7 +532,7 @@ namespace UnitConverter
                     rawValueStr.Append(buff);
                     if (categoryPicker.SelectedIndex != -1 && rawPicker.SelectedIndex != -1)
                     {
-                        ICategoryConverter categoryConverter =
+                        CategoryConverter categoryConverter =
                         CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
                         categoryConverter.UnitConverter =
                             UnitConverterFactory.CreateUnitConverter(rawPicker.Items[rawPicker.SelectedIndex]);
@@ -608,7 +608,7 @@ namespace UnitConverter
                 {
                     try
                     {
-                        ICategoryConverter categoryConverter = 
+                        CategoryConverter categoryConverter = 
                             CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
                         categoryConverter.UnitConverter =
                             UnitConverterFactory.CreateUnitConverter(rawPicker.Items[rawPicker.SelectedIndex]);
@@ -699,7 +699,7 @@ namespace UnitConverter
             rawValueEntry.CursorPosition = temp;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
-                ICategoryConverter categoryConverter =
+                CategoryConverter categoryConverter =
                     CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
                 categoryConverter.UnitConverter =
                     UnitConverterFactory.CreateUnitConverter(rawPicker.Items[rawPicker.SelectedIndex]);
@@ -743,7 +743,7 @@ namespace UnitConverter
             rawValueEntry.CursorPosition = temp;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
-                ICategoryConverter categoryConverter =
+                CategoryConverter categoryConverter =
                     CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
                 categoryConverter.UnitConverter =
                     UnitConverterFactory.CreateUnitConverter(rawPicker.Items[rawPicker.SelectedIndex]);
@@ -787,7 +787,7 @@ namespace UnitConverter
             rawValueEntry.CursorPosition = temp;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
-                ICategoryConverter categoryConverter =
+                CategoryConverter categoryConverter =
                     CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
                 categoryConverter.UnitConverter =
                     UnitConverterFactory.CreateUnitConverter(rawPicker.Items[rawPicker.SelectedIndex]);
@@ -832,7 +832,7 @@ namespace UnitConverter
             rawValueEntry.CursorPosition = temp;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
-                ICategoryConverter categoryConverter =
+                CategoryConverter categoryConverter =
                     CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
                 categoryConverter.UnitConverter =
                     UnitConverterFactory.CreateUnitConverter(rawPicker.Items[rawPicker.SelectedIndex]);
@@ -877,7 +877,7 @@ namespace UnitConverter
             rawValueEntry.CursorPosition = temp;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
-                ICategoryConverter categoryConverter =
+                CategoryConverter categoryConverter =
                     CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
                 categoryConverter.UnitConverter =
                     UnitConverterFactory.CreateUnitConverter(rawPicker.Items[rawPicker.SelectedIndex]);
@@ -922,7 +922,7 @@ namespace UnitConverter
             rawValueEntry.CursorPosition = temp;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
-                ICategoryConverter categoryConverter =
+                CategoryConverter categoryConverter =
                     CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
                 categoryConverter.UnitConverter =
                     UnitConverterFactory.CreateUnitConverter(rawPicker.Items[rawPicker.SelectedIndex]);
@@ -967,7 +967,7 @@ namespace UnitConverter
             rawValueEntry.CursorPosition = temp;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
-                ICategoryConverter categoryConverter =
+                CategoryConverter categoryConverter =
                     CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
                 categoryConverter.UnitConverter =
                     UnitConverterFactory.CreateUnitConverter(rawPicker.Items[rawPicker.SelectedIndex]);
@@ -1012,7 +1012,7 @@ namespace UnitConverter
             rawValueEntry.CursorPosition = temp;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
-                ICategoryConverter categoryConverter =
+                CategoryConverter categoryConverter =
                     CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
                 categoryConverter.UnitConverter =
                     UnitConverterFactory.CreateUnitConverter(rawPicker.Items[rawPicker.SelectedIndex]);
@@ -1057,7 +1057,7 @@ namespace UnitConverter
             rawValueEntry.CursorPosition = temp;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
-                ICategoryConverter categoryConverter =
+                CategoryConverter categoryConverter =
                     CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
                 categoryConverter.UnitConverter =
                     UnitConverterFactory.CreateUnitConverter(rawPicker.Items[rawPicker.SelectedIndex]);
@@ -1102,7 +1102,7 @@ namespace UnitConverter
             rawValueEntry.CursorPosition = temp;
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
-                ICategoryConverter categoryConverter =
+                CategoryConverter categoryConverter =
                     CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
                 categoryConverter.UnitConverter =
                     UnitConverterFactory.CreateUnitConverter(rawPicker.Items[rawPicker.SelectedIndex]);
@@ -1126,7 +1126,7 @@ namespace UnitConverter
             }
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
-                ICategoryConverter categoryConverter =
+                CategoryConverter categoryConverter =
                     CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
                 categoryConverter.UnitConverter =
                     UnitConverterFactory.CreateUnitConverter(rawPicker.Items[rawPicker.SelectedIndex]);
@@ -1151,7 +1151,7 @@ namespace UnitConverter
             }
             if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
             {
-                ICategoryConverter categoryConverter =
+                CategoryConverter categoryConverter =
                     CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
                 categoryConverter.UnitConverter =
                     UnitConverterFactory.CreateUnitConverter(rawPicker.Items[rawPicker.SelectedIndex]);

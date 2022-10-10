@@ -4,21 +4,13 @@ using System.Text;
 
 namespace UnitConverter.Converter
 {
-    internal sealed class WeightConverter : ICategoryConverter
+    internal sealed class WeightConverter : CategoryConverter
     {
-        public WeightConverter()
-        {
-            _unitConverter = null;
-        }
-        public double Convert(string processedUnit, string rawValue)
+        public WeightConverter() :
+            base() { }
+        public override double Convert(string processedUnit, string rawValue)
         {
             return _unitConverter.Convert(processedUnit, rawValue);
         }
-        public IUnitConverter UnitConverter
-        {
-            set { _unitConverter = value; }
-        }
-
-        private IUnitConverter _unitConverter;
     }
 }

@@ -6,7 +6,7 @@ namespace UnitConverter.Converter
 {
     internal static class CategoryConverterFactory
     {
-        public static ICategoryConverter CreateCategoryConverter(string category)
+        public static CategoryConverter CreateCategoryConverter(string category)
         {
             switch (category)
             {
