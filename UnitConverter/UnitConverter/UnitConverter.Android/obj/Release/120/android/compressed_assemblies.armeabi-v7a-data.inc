@@ -52,7 +52,7 @@
 
 	.type	.L.compressed_assembly_data.13, %object
 	.local	.L.compressed_assembly_data.13
-	.comm	.L.compressed_assembly_data.13, 43520, 16
+	.comm	.L.compressed_assembly_data.13, 44032, 16
 
 	.type	.L.compressed_assembly_data.14, %object
 	.local	.L.compressed_assembly_data.14

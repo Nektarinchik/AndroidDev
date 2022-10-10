@@ -234,12 +234,22 @@ map_modules:
 	.long	0x0	# java_name_width
 	.long	0x0	# java_map
 
+	.byte	0xcd, 0x1c, 0x17, 0x75, 0xfa, 0xfb, 0x64, 0x4b, 0xb3, 0x2b, 0x14, 0x20, 0x4a, 0x83, 0x62, 0x24	# module_uuid: 75171ccd-fbfa-4b64-b32b-14204a836224
+	.long	0x1	# entry_count
+	.long	0x0	# duplicate_count
+	.long	.L.module19_managed_to_java	# map
+	.long	0	# duplicate_map
+	.long	map_aname.19	# assembly_name: UnitConverter.Android
+	.long	0x0	# image
+	.long	0x0	# java_name_width
+	.long	0x0	# java_map
+
 	.byte	0xd9, 0x85, 0xab, 0x22, 0xc, 0xc4, 0x39, 0x47, 0xb6, 0xfe, 0xc7, 0xac, 0x6c, 0xfd, 0x2, 0x2e	# module_uuid: 22ab85d9-c40c-4739-b6fe-c7ac6cfd022e
 	.long	0x1	# entry_count
 	.long	0x1	# duplicate_count
-	.long	.L.module19_managed_to_java	# map
-	.long	.L.module19_managed_to_java_duplicates	# duplicate_map
-	.long	map_aname.19	# assembly_name: Xamarin.Google.Guava.ListenableFuture
+	.long	.L.module20_managed_to_java	# map
+	.long	.L.module20_managed_to_java_duplicates	# duplicate_map
+	.long	map_aname.20	# assembly_name: Xamarin.Google.Guava.ListenableFuture
 	.long	0x0	# image
 	.long	0x0	# java_name_width
 	.long	0x0	# java_map
@@ -247,9 +257,9 @@ map_modules:
 	.byte	0xe0, 0xaa, 0xf2, 0xc1, 0x69, 0xe2, 0x60, 0x42, 0xa3, 0xe9, 0x91, 0x29, 0xd7, 0xf3, 0xa, 0x4b	# module_uuid: c1f2aae0-e269-4260-a3e9-9129d7f30a4b
 	.long	0x1	# entry_count
 	.long	0x1	# duplicate_count
-	.long	.L.module20_managed_to_java	# map
-	.long	.L.module20_managed_to_java_duplicates	# duplicate_map
-	.long	map_aname.20	# assembly_name: Xamarin.AndroidX.CustomView
+	.long	.L.module21_managed_to_java	# map
+	.long	.L.module21_managed_to_java_duplicates	# duplicate_map
+	.long	map_aname.21	# assembly_name: Xamarin.AndroidX.CustomView
 	.long	0x0	# image
 	.long	0x0	# java_name_width
 	.long	0x0	# java_map
@@ -257,9 +267,9 @@ map_modules:
 	.byte	0xe5, 0x97, 0x74, 0x2a, 0xdc, 0xbc, 0x4f, 0x4c, 0xa2, 0xc5, 0x76, 0x24, 0x90, 0x90, 0x76, 0x6e	# module_uuid: 2a7497e5-bcdc-4c4f-a2c5-76249090766e
 	.long	0x4	# entry_count
 	.long	0x2	# duplicate_count
-	.long	.L.module21_managed_to_java	# map
-	.long	.L.module21_managed_to_java_duplicates	# duplicate_map
-	.long	map_aname.21	# assembly_name: Xamarin.AndroidX.CoordinatorLayout
+	.long	.L.module22_managed_to_java	# map
+	.long	.L.module22_managed_to_java_duplicates	# duplicate_map
+	.long	map_aname.22	# assembly_name: Xamarin.AndroidX.CoordinatorLayout
 	.long	0x0	# image
 	.long	0x0	# java_name_width
 	.long	0x0	# java_map
@@ -267,19 +277,9 @@ map_modules:
 	.byte	0xec, 0xa6, 0x74, 0xc8, 0x74, 0x72, 0xb4, 0x48, 0x85, 0xfc, 0x6, 0x1e, 0xc, 0xaa, 0x3c, 0x72	# module_uuid: c874a6ec-7274-48b4-85fc-061e0caa3c72
 	.long	0xd7	# entry_count
 	.long	0x0	# duplicate_count
-	.long	.L.module22_managed_to_java	# map
-	.long	0	# duplicate_map
-	.long	map_aname.22	# assembly_name: Xamarin.Forms.Platform.Android
-	.long	0x0	# image
-	.long	0x0	# java_name_width
-	.long	0x0	# java_map
-
-	.byte	0xf5, 0x5f, 0xcb, 0xe5, 0x7c, 0x9b, 0x74, 0x4d, 0x89, 0xdf, 0xd4, 0xab, 0xa9, 0x29, 0x78, 0x0	# module_uuid: e5cb5ff5-9b7c-4d74-89df-d4aba9297800
-	.long	0x1	# entry_count
-	.long	0x0	# duplicate_count
 	.long	.L.module23_managed_to_java	# map
 	.long	0	# duplicate_map
-	.long	map_aname.23	# assembly_name: UnitConverter.Android
+	.long	map_aname.23	# assembly_name: Xamarin.Forms.Platform.Android
 	.long	0x0	# image
 	.long	0x0	# java_name_width
 	.long	0x0	# java_map
@@ -2675,25 +2675,25 @@ map_java:
 	.zero	68	# byteCount == 33; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x15	# module_index
+	.long	0x16	# module_index
 	.long	0x2000027	# type_token_id
 	.ascii	"androidx/coordinatorlayout/widget/CoordinatorLayout"	# java_name
 	.zero	50	# byteCount == 51; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x15	# module_index
+	.long	0x16	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"androidx/coordinatorlayout/widget/CoordinatorLayout$AttachedBehavior"	# java_name
 	.zero	33	# byteCount == 68; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x15	# module_index
+	.long	0x16	# module_index
 	.long	0x200002a	# type_token_id
 	.ascii	"androidx/coordinatorlayout/widget/CoordinatorLayout$Behavior"	# java_name
 	.zero	41	# byteCount == 60; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x15	# module_index
+	.long	0x16	# module_index
 	.long	0x200002c	# type_token_id
 	.ascii	"androidx/coordinatorlayout/widget/CoordinatorLayout$LayoutParams"	# java_name
 	.zero	37	# byteCount == 64; fixedWidth == 101; returned size == 101
@@ -3155,7 +3155,7 @@ map_java:
 	.zero	57	# byteCount == 44; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x14	# module_index
+	.long	0x15	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"androidx/customview/widget/Openable"	# java_name
 	.zero	66	# byteCount == 35; fixedWidth == 101; returned size == 101
@@ -3857,7 +3857,7 @@ map_java:
 	.zero	51	# byteCount == 50; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x13	# module_index
+	.long	0x14	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"com/google/common/util/concurrent/ListenableFuture"	# java_name
 	.zero	51	# byteCount == 50; fixedWidth == 101; returned size == 101
@@ -3875,1273 +3875,1273 @@ map_java:
 	.zero	63	# byteCount == 38; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc6414252951f3f66c67/CarouselViewAdapter_2"	# java_name
 	.zero	58	# byteCount == 43; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc6414252951f3f66c67/RecyclerViewScrollListener_2"	# java_name
 	.zero	51	# byteCount == 50; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000fa	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/AHorizontalScrollView"	# java_name
 	.zero	58	# byteCount == 43; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200001a	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/AccessibilityDelegateAutomationId"	# java_name
 	.zero	46	# byteCount == 55; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000f8	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ActionSheetRenderer"	# java_name
 	.zero	60	# byteCount == 41; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000f9	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ActivityIndicatorRenderer"	# java_name
 	.zero	54	# byteCount == 47; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200001c	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/AndroidActivity"	# java_name
 	.zero	64	# byteCount == 37; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200003a	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/BaseCellView"	# java_name
 	.zero	67	# byteCount == 34; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000106	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/BorderDrawable"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200010d	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/BoxRenderer"	# java_name
 	.zero	68	# byteCount == 33; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200010e	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ButtonRenderer"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200010f	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ButtonRenderer_ButtonClickListener"	# java_name
 	.zero	45	# byteCount == 56; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000111	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ButtonRenderer_ButtonTouchListener"	# java_name
 	.zero	45	# byteCount == 56; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000113	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/CarouselPageAdapter"	# java_name
 	.zero	60	# byteCount == 41; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000114	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/CarouselPageRenderer"	# java_name
 	.zero	59	# byteCount == 42; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200004e	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/CarouselSpacingItemDecoration"	# java_name
 	.zero	50	# byteCount == 51; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200004f	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/CarouselViewRenderer"	# java_name
 	.zero	59	# byteCount == 42; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000050	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/CarouselViewRenderer_CarouselViewOnScrollListener"	# java_name
 	.zero	30	# byteCount == 71; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000051	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/CarouselViewRenderer_CarouselViewwOnGlobalLayoutListener"	# java_name
 	.zero	23	# byteCount == 78; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000038	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/CellAdapter"	# java_name
 	.zero	68	# byteCount == 33; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200003e	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/CellRenderer_RendererHolder"	# java_name
 	.zero	52	# byteCount == 49; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000054	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/CenterSnapHelper"	# java_name
 	.zero	63	# byteCount == 38; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000020	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/CheckBoxDesignerRenderer"	# java_name
 	.zero	55	# byteCount == 46; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000021	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/CheckBoxRenderer"	# java_name
 	.zero	63	# byteCount == 38; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000022	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/CheckBoxRendererBase"	# java_name
 	.zero	59	# byteCount == 42; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000115	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/CircularProgress"	# java_name
 	.zero	63	# byteCount == 38; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000055	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/CollectionViewRenderer"	# java_name
 	.zero	57	# byteCount == 44; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000116	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ColorChangeRevealDrawable"	# java_name
 	.zero	54	# byteCount == 47; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000117	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ConditionalFocusLayout"	# java_name
 	.zero	57	# byteCount == 44; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000118	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ContainerView"	# java_name
 	.zero	66	# byteCount == 35; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000119	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/CustomFrameLayout"	# java_name
 	.zero	62	# byteCount == 39; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000056	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/DataChangeObserver"	# java_name
 	.zero	61	# byteCount == 40; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200011c	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/DatePickerRenderer"	# java_name
 	.zero	61	# byteCount == 40; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/DatePickerRendererBase_1"	# java_name
 	.zero	55	# byteCount == 46; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200008a	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/DragAndDropGestureHandler"	# java_name
 	.zero	54	# byteCount == 47; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200008b	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/DragAndDropGestureHandler_CustomLocalStateData"	# java_name
 	.zero	33	# byteCount == 68; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000057	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/EdgeSnapHelper"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000131	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/EditorEditText"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200011e	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/EditorRenderer"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/EditorRendererBase_1"	# java_name
 	.zero	59	# byteCount == 42; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001c6	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/EllipseRenderer"	# java_name
 	.zero	64	# byteCount == 37; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001c7	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/EllipseView"	# java_name
 	.zero	68	# byteCount == 33; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000059	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/EmptyViewAdapter"	# java_name
 	.zero	63	# byteCount == 38; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200005b	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/EndSingleSnapHelper"	# java_name
 	.zero	60	# byteCount == 41; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200005c	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/EndSnapHelper"	# java_name
 	.zero	66	# byteCount == 35; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000094	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/EntryAccessibilityDelegate"	# java_name
 	.zero	53	# byteCount == 48; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000040	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/EntryCellEditText"	# java_name
 	.zero	62	# byteCount == 39; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000042	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/EntryCellView"	# java_name
 	.zero	66	# byteCount == 35; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000130	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/EntryEditText"	# java_name
 	.zero	66	# byteCount == 35; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000121	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/EntryRenderer"	# java_name
 	.zero	66	# byteCount == 35; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/EntryRendererBase_1"	# java_name
 	.zero	60	# byteCount == 41; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000023	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FlyoutPageContainer"	# java_name
 	.zero	60	# byteCount == 41; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000024	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FlyoutPageRenderer"	# java_name
 	.zero	61	# byteCount == 40; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000125	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FlyoutPageRendererNonAppCompat"	# java_name
 	.zero	49	# byteCount == 52; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000129	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FormattedStringExtensions_FontSpan"	# java_name
 	.zero	45	# byteCount == 56; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200012b	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FormattedStringExtensions_LineHeightSpan"	# java_name
 	.zero	39	# byteCount == 62; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200012a	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FormattedStringExtensions_TextDecorationSpan"	# java_name
 	.zero	35	# byteCount == 66; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000fe	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FormsAnimationDrawable"	# java_name
 	.zero	57	# byteCount == 44; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000028	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FormsAppCompatActivity"	# java_name
 	.zero	57	# byteCount == 44; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000ac	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FormsApplicationActivity"	# java_name
 	.zero	55	# byteCount == 46; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200012c	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FormsEditText"	# java_name
 	.zero	66	# byteCount == 35; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200012d	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FormsEditTextBase"	# java_name
 	.zero	62	# byteCount == 39; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000132	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FormsImageView"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000133	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FormsSeekBar"	# java_name
 	.zero	67	# byteCount == 34; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000134	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FormsTextView"	# java_name
 	.zero	66	# byteCount == 35; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000135	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FormsVideoView"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000138	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FormsWebChromeClient"	# java_name
 	.zero	59	# byteCount == 42; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200013a	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FormsWebViewClient"	# java_name
 	.zero	61	# byteCount == 40; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200013b	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FrameRenderer"	# java_name
 	.zero	66	# byteCount == 35; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200013c	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/FrameRenderer_FrameDrawable"	# java_name
 	.zero	52	# byteCount == 49; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200013d	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/GenericAnimatorListener"	# java_name
 	.zero	56	# byteCount == 45; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000af	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/GenericGlobalLayoutListener"	# java_name
 	.zero	52	# byteCount == 49; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000b0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/GenericMenuClickListener"	# java_name
 	.zero	55	# byteCount == 46; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000b2	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/GestureManager_TapAndPanGestureDetector"	# java_name
 	.zero	40	# byteCount == 61; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000b4	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/GradientStrokeDrawable"	# java_name
 	.zero	57	# byteCount == 44; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000b8	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/GradientStrokeDrawable_GradientShaderFactory"	# java_name
 	.zero	35	# byteCount == 66; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200005d	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/GridLayoutSpanSizeLookup"	# java_name
 	.zero	55	# byteCount == 46; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/GroupableItemsViewAdapter_2"	# java_name
 	.zero	52	# byteCount == 49; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/GroupableItemsViewRenderer_3"	# java_name
 	.zero	51	# byteCount == 50; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200013e	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/GroupedListViewAdapter"	# java_name
 	.zero	57	# byteCount == 44; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200002c	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ImageButtonRenderer"	# java_name
 	.zero	60	# byteCount == 41; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000bf	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ImageCache_CacheEntry"	# java_name
 	.zero	58	# byteCount == 43; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000c0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ImageCache_FormsLruCache"	# java_name
 	.zero	55	# byteCount == 46; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200014a	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ImageRenderer"	# java_name
 	.zero	66	# byteCount == 35; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000064	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/IndicatorViewRenderer"	# java_name
 	.zero	58	# byteCount == 43; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000c4	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/InnerGestureListener"	# java_name
 	.zero	59	# byteCount == 42; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000c5	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/InnerScaleListener"	# java_name
 	.zero	61	# byteCount == 40; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000065	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ItemContentView"	# java_name
 	.zero	64	# byteCount == 37; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ItemsViewAdapter_2"	# java_name
 	.zero	61	# byteCount == 40; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ItemsViewRenderer_3"	# java_name
 	.zero	60	# byteCount == 41; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200015d	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/LabelRenderer"	# java_name
 	.zero	66	# byteCount == 35; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001c8	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/LineRenderer"	# java_name
 	.zero	67	# byteCount == 34; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001c9	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/LineView"	# java_name
 	.zero	71	# byteCount == 30; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200015e	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ListViewAdapter"	# java_name
 	.zero	64	# byteCount == 37; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000160	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ListViewRenderer"	# java_name
 	.zero	63	# byteCount == 38; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000161	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ListViewRenderer_Container"	# java_name
 	.zero	53	# byteCount == 48; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000163	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ListViewRenderer_ListViewScrollDetector"	# java_name
 	.zero	40	# byteCount == 61; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000162	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ListViewRenderer_SwipeRefreshLayoutWithFixedNestedScrolling"	# java_name
 	.zero	20	# byteCount == 81; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000165	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/LocalizedDigitsKeyListener"	# java_name
 	.zero	53	# byteCount == 48; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000166	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/MasterDetailContainer"	# java_name
 	.zero	58	# byteCount == 43; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000167	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/MasterDetailRenderer"	# java_name
 	.zero	59	# byteCount == 42; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000d4	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/NativeViewWrapperRenderer"	# java_name
 	.zero	54	# byteCount == 47; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200016a	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/NavigationRenderer"	# java_name
 	.zero	61	# byteCount == 40; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200006c	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/NongreedySnapHelper"	# java_name
 	.zero	60	# byteCount == 41; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200006d	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/NongreedySnapHelper_InitialScrollListener"	# java_name
 	.zero	38	# byteCount == 63; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ObjectJavaBox_1"	# java_name
 	.zero	64	# byteCount == 37; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200016e	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/OpenGLViewRenderer"	# java_name
 	.zero	61	# byteCount == 40; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200016f	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/OpenGLViewRenderer_Renderer"	# java_name
 	.zero	52	# byteCount == 49; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000170	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/PageContainer"	# java_name
 	.zero	66	# byteCount == 35; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200002e	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/PageExtensions_EmbeddedFragment"	# java_name
 	.zero	48	# byteCount == 53; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000030	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/PageExtensions_EmbeddedSupportFragment"	# java_name
 	.zero	41	# byteCount == 60; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000171	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/PageRenderer"	# java_name
 	.zero	67	# byteCount == 34; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001ca	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/PathRenderer"	# java_name
 	.zero	67	# byteCount == 34; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001cb	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/PathView"	# java_name
 	.zero	71	# byteCount == 30; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000173	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/PickerEditText"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000db	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/PickerManager_PickerListener"	# java_name
 	.zero	51	# byteCount == 50; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000174	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/PickerRenderer"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000ea	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/PlatformRenderer"	# java_name
 	.zero	63	# byteCount == 38; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000de	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/Platform_DefaultRenderer"	# java_name
 	.zero	55	# byteCount == 46; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001cc	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/PolygonRenderer"	# java_name
 	.zero	64	# byteCount == 37; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001cd	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/PolygonView"	# java_name
 	.zero	68	# byteCount == 33; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001ce	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/PolylineRenderer"	# java_name
 	.zero	63	# byteCount == 38; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001cf	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/PolylineView"	# java_name
 	.zero	67	# byteCount == 34; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000072	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/PositionalSmoothScroller"	# java_name
 	.zero	55	# byteCount == 46; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20000f5	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/PowerSaveModeBroadcastReceiver"	# java_name
 	.zero	49	# byteCount == 52; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000176	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ProgressBarRenderer"	# java_name
 	.zero	60	# byteCount == 41; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000031	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/RadioButtonRenderer"	# java_name
 	.zero	60	# byteCount == 41; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001d1	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/RectView"	# java_name
 	.zero	71	# byteCount == 30; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001d0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/RectangleRenderer"	# java_name
 	.zero	62	# byteCount == 39; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200018a	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/RecyclerViewContainer"	# java_name
 	.zero	58	# byteCount == 43; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000177	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/RefreshViewRenderer"	# java_name
 	.zero	60	# byteCount == 41; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000074	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ScrollHelper"	# java_name
 	.zero	67	# byteCount == 34; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200018b	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ScrollLayoutManager"	# java_name
 	.zero	60	# byteCount == 41; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000178	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ScrollViewContainer"	# java_name
 	.zero	60	# byteCount == 41; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000179	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ScrollViewRenderer"	# java_name
 	.zero	61	# byteCount == 40; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200017d	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/SearchBarRenderer"	# java_name
 	.zero	62	# byteCount == 39; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/SelectableItemsViewAdapter_2"	# java_name
 	.zero	51	# byteCount == 50; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/SelectableItemsViewRenderer_3"	# java_name
 	.zero	50	# byteCount == 51; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000078	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/SelectableViewHolder"	# java_name
 	.zero	59	# byteCount == 42; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShapeRenderer_2"	# java_name
 	.zero	64	# byteCount == 37; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001d3	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShapeView"	# java_name
 	.zero	70	# byteCount == 31; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000180	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellContentFragment"	# java_name
 	.zero	59	# byteCount == 42; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000181	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellFlyoutLayout"	# java_name
 	.zero	62	# byteCount == 39; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000182	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellFlyoutRecyclerAdapter"	# java_name
 	.zero	53	# byteCount == 48; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000185	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellFlyoutRecyclerAdapter_ElementViewHolder"	# java_name
 	.zero	35	# byteCount == 66; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000183	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellFlyoutRecyclerAdapter_LinearLayoutWithFocus"	# java_name
 	.zero	31	# byteCount == 70; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000186	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellFlyoutRenderer"	# java_name
 	.zero	60	# byteCount == 41; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000187	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellFlyoutTemplatedContentRenderer"	# java_name
 	.zero	44	# byteCount == 57; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000188	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellFlyoutTemplatedContentRenderer_HeaderContainer"	# java_name
 	.zero	28	# byteCount == 73; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200018c	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellFragmentPagerAdapter"	# java_name
 	.zero	54	# byteCount == 47; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200018d	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellItemRenderer"	# java_name
 	.zero	62	# byteCount == 39; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000192	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellItemRendererBase"	# java_name
 	.zero	58	# byteCount == 43; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000194	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellPageContainer"	# java_name
 	.zero	61	# byteCount == 40; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000196	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellRenderer_SplitDrawable"	# java_name
 	.zero	52	# byteCount == 49; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000198	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellSearchView"	# java_name
 	.zero	64	# byteCount == 37; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200019c	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellSearchViewAdapter"	# java_name
 	.zero	57	# byteCount == 44; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200019d	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellSearchViewAdapter_CustomFilter"	# java_name
 	.zero	44	# byteCount == 57; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200019e	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellSearchViewAdapter_ObjectWrapper"	# java_name
 	.zero	43	# byteCount == 58; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000199	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellSearchView_ClipDrawableWrapper"	# java_name
 	.zero	44	# byteCount == 57; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200019f	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellSectionRenderer"	# java_name
 	.zero	59	# byteCount == 42; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001a3	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellToolbarTracker"	# java_name
 	.zero	60	# byteCount == 41; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001a4	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ShellToolbarTracker_FlyoutIconDrawerDrawable"	# java_name
 	.zero	35	# byteCount == 66; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000079	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/SimpleViewHolder"	# java_name
 	.zero	63	# byteCount == 38; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200007a	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/SingleSnapHelper"	# java_name
 	.zero	63	# byteCount == 38; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200007b	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/SizedItemContentView"	# java_name
 	.zero	59	# byteCount == 42; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001aa	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/SliderRenderer"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200007d	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/SpacingItemDecoration"	# java_name
 	.zero	58	# byteCount == 43; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200007e	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/StartSingleSnapHelper"	# java_name
 	.zero	58	# byteCount == 43; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200007f	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/StartSnapHelper"	# java_name
 	.zero	64	# byteCount == 37; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001ab	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/StepperRenderer"	# java_name
 	.zero	64	# byteCount == 37; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001d5	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/StepperRendererManager_StepperListener"	# java_name
 	.zero	41	# byteCount == 60; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/StructuredItemsViewAdapter_2"	# java_name
 	.zero	51	# byteCount == 50; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/StructuredItemsViewRenderer_3"	# java_name
 	.zero	50	# byteCount == 51; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001ae	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/SwipeViewRenderer"	# java_name
 	.zero	62	# byteCount == 39; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000045	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/SwitchCellView"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001b1	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/SwitchRenderer"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001b2	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/TabbedRenderer"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001b3	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/TableViewModelRenderer"	# java_name
 	.zero	57	# byteCount == 44; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001b4	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/TableViewRenderer"	# java_name
 	.zero	62	# byteCount == 39; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000082	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/TemplatedItemViewHolder"	# java_name
 	.zero	56	# byteCount == 45; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000047	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/TextCellRenderer_TextCellView"	# java_name
 	.zero	50	# byteCount == 51; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000083	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/TextViewHolder"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001b6	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/TimePickerRenderer"	# java_name
 	.zero	61	# byteCount == 40; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/TimePickerRendererBase_1"	# java_name
 	.zero	55	# byteCount == 46; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000049	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ViewCellRenderer_ViewCellContainer"	# java_name
 	.zero	45	# byteCount == 56; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200004b	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ViewCellRenderer_ViewCellContainer_LongPressGestureListener"	# java_name
 	.zero	20	# byteCount == 81; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200004a	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ViewCellRenderer_ViewCellContainer_TapGestureListener"	# java_name
 	.zero	26	# byteCount == 75; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001df	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ViewRenderer"	# java_name
 	.zero	67	# byteCount == 34; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/ViewRenderer_2"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/VisualElementRenderer_1"	# java_name
 	.zero	56	# byteCount == 45; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001e7	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/VisualElementTracker_AttachTracker"	# java_name
 	.zero	45	# byteCount == 56; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001ba	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/WebViewRenderer"	# java_name
 	.zero	64	# byteCount == 37; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001bb	# type_token_id
 	.ascii	"crc643f46942d9dd1fff9/WebViewRenderer_JavascriptResult"	# java_name
 	.zero	47	# byteCount == 54; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000209	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/ButtonRenderer"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200020a	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/CarouselPageRenderer"	# java_name
 	.zero	59	# byteCount == 42; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/FormsFragmentPagerAdapter_1"	# java_name
 	.zero	52	# byteCount == 49; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200020d	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/FormsViewPager"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200020e	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/FragmentContainer"	# java_name
 	.zero	62	# byteCount == 39; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200020f	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/FrameRenderer"	# java_name
 	.zero	66	# byteCount == 35; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200020b	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/MasterDetailPageRenderer"	# java_name
 	.zero	55	# byteCount == 46; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000211	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/NavigationPageRenderer"	# java_name
 	.zero	57	# byteCount == 44; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000212	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/NavigationPageRenderer_ClickListener"	# java_name
 	.zero	43	# byteCount == 58; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000213	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/NavigationPageRenderer_Container"	# java_name
 	.zero	47	# byteCount == 54; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000214	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/NavigationPageRenderer_DrawerMultiplexedListener"	# java_name
 	.zero	31	# byteCount == 70; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200021d	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/PickerRenderer"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/PickerRendererBase_1"	# java_name
 	.zero	59	# byteCount == 42; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x200021f	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/Platform_ModalContainer"	# java_name
 	.zero	56	# byteCount == 45; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000224	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/ShellFragmentContainer"	# java_name
 	.zero	57	# byteCount == 44; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000225	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/SwitchRenderer"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000226	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/TabbedPageRenderer"	# java_name
 	.zero	61	# byteCount == 40; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x0	# type_token_id
 	.ascii	"crc64720bb2db43a66fe9/ViewRenderer_2"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x17	# module_index
+	.long	0x13	# module_index
 	.long	0x2000002	# type_token_id
 	.ascii	"crc649d8bda5926bb0a8b/MainActivity"	# java_name
 	.zero	67	# byteCount == 34; fixedWidth == 101; returned size == 101
@@ -5153,25 +5153,25 @@ map_java:
 	.zero	47	# byteCount == 54; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001fa	# type_token_id
 	.ascii	"crc64ee486da937c010f4/ButtonRenderer"	# java_name
 	.zero	65	# byteCount == 36; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x20001fd	# type_token_id
 	.ascii	"crc64ee486da937c010f4/FrameRenderer"	# java_name
 	.zero	66	# byteCount == 35; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000203	# type_token_id
 	.ascii	"crc64ee486da937c010f4/ImageRenderer"	# java_name
 	.zero	66	# byteCount == 35; fixedWidth == 101; returned size == 101
 	.zero	3
 
-	.long	0x16	# module_index
+	.long	0x17	# module_index
 	.long	0x2000204	# type_token_id
 	.ascii	"crc64ee486da937c010f4/LabelRenderer"	# java_name
 	.zero	66	# byteCount == 35; fixedWidth == 101; returned size == 101

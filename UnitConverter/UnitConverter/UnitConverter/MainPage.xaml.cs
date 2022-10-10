@@ -654,11 +654,27 @@ namespace UnitConverter
                 }
                 else
                 {
-                    rawValueStr.Insert(rawValueEntry.CursorPosition, ".");
-                    int temp = rawValueEntry.CursorPosition + 1;
-                    rawValueEntry.Text = rawValueStr.ToString();
-                    rawValueEntry.CursorPosition = temp;
-                    rawValueEntry.CursorPosition = temp;
+                    if (rawValueEntry.CursorPosition != 0)
+                    {
+                        rawValueStr.Insert(rawValueEntry.CursorPosition, ".");
+                        int temp = rawValueEntry.CursorPosition + 1;
+                        rawValueEntry.Text = rawValueStr.ToString();
+                        rawValueEntry.CursorPosition = temp;
+                        rawValueEntry.CursorPosition = temp;
+                        if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
+                        {
+                            CategoryConverter categoryConverter =
+                                CategoryConverterFactory.CreateCategoryConverter(categoryPicker.Items[categoryPicker.SelectedIndex]);
+                            categoryConverter.UnitConverter =
+                                UnitConverterFactory.CreateUnitConverter(rawPicker.Items[rawPicker.SelectedIndex]);
+                            double processedValue = categoryConverter.Convert(
+                                processedPicker.Items[processedPicker.SelectedIndex],
+                                rawValueStr.ToString()
+                                );
+                            processedValueStr = processedValue.ToString();
+                            processedValueEntry.Text = processedValueStr;
+                        }
+                    }
                 }
             }
             else

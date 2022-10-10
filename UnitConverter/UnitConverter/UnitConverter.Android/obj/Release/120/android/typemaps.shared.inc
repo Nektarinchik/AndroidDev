@@ -97,28 +97,28 @@ map_aname.18:
 
 	.type	map_aname.19, @object
 map_aname.19:
-	.asciz	"Xamarin.Google.Guava.ListenableFuture"
-	.size	map_aname.19, 38
+	.asciz	"UnitConverter.Android"
+	.size	map_aname.19, 22
 
 	.type	map_aname.20, @object
 map_aname.20:
-	.asciz	"Xamarin.AndroidX.CustomView"
-	.size	map_aname.20, 28
+	.asciz	"Xamarin.Google.Guava.ListenableFuture"
+	.size	map_aname.20, 38
 
 	.type	map_aname.21, @object
 map_aname.21:
-	.asciz	"Xamarin.AndroidX.CoordinatorLayout"
-	.size	map_aname.21, 35
+	.asciz	"Xamarin.AndroidX.CustomView"
+	.size	map_aname.21, 28
 
 	.type	map_aname.22, @object
 map_aname.22:
-	.asciz	"Xamarin.Forms.Platform.Android"
-	.size	map_aname.22, 31
+	.asciz	"Xamarin.AndroidX.CoordinatorLayout"
+	.size	map_aname.22, 35
 
 	.type	map_aname.23, @object
 map_aname.23:
-	.asciz	"UnitConverter.Android"
-	.size	map_aname.23, 22
+	.asciz	"Xamarin.Forms.Platform.Android"
+	.size	map_aname.23, 31
 
 	.type	map_aname.24, @object
 map_aname.24:
