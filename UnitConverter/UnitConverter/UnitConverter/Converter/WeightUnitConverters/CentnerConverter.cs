@@ -4,7 +4,7 @@ using System.Text;
 
 namespace UnitConverter.Converter
 {
-    internal sealed class FootConverter : IUnitConverter
+    internal sealed class CentnerConverter : IUnitConverter
     {
         public double Convert(string processedUnit, string rawValue)
         {
@@ -12,14 +12,14 @@ namespace UnitConverter.Converter
             {
                 switch (processedUnit)
                 {
-                    case "inch":
-                        return System.Convert.ToDouble(rawValue) * 12.0;
-                    case "sm":
-                        return System.Convert.ToDouble(rawValue) / 0.033;
-                    case "foot":
+                    case "centner":
                         return System.Convert.ToDouble(rawValue);
-                    case "m":
-                        return System.Convert.ToDouble(rawValue) * 0.3;
+                    case "kg":
+                        return System.Convert.ToDouble(rawValue) * 100;
+                    case "g":
+                        return System.Convert.ToDouble(rawValue) * 100000;
+                    case "mg":
+                        return System.Convert.ToDouble(rawValue) * 100000000;
                 }
                 return 0.0;
             }

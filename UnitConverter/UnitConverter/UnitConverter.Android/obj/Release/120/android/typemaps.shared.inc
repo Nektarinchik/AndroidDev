@@ -72,33 +72,33 @@ map_aname.13:
 
 	.type	map_aname.14, @object
 map_aname.14:
-	.asciz	"Xamarin.Google.Android.Material"
-	.size	map_aname.14, 32
+	.asciz	"UnitConverter.Android"
+	.size	map_aname.14, 22
 
 	.type	map_aname.15, @object
 map_aname.15:
-	.asciz	"Xamarin.AndroidX.DrawerLayout"
-	.size	map_aname.15, 30
+	.asciz	"Xamarin.Google.Android.Material"
+	.size	map_aname.15, 32
 
 	.type	map_aname.16, @object
 map_aname.16:
-	.asciz	"Xamarin.AndroidX.RecyclerView"
+	.asciz	"Xamarin.AndroidX.DrawerLayout"
 	.size	map_aname.16, 30
 
 	.type	map_aname.17, @object
 map_aname.17:
-	.asciz	"Xamarin.AndroidX.AppCompat"
-	.size	map_aname.17, 27
+	.asciz	"Xamarin.AndroidX.RecyclerView"
+	.size	map_aname.17, 30
 
 	.type	map_aname.18, @object
 map_aname.18:
-	.asciz	"FormsViewGroup"
-	.size	map_aname.18, 15
+	.asciz	"Xamarin.AndroidX.AppCompat"
+	.size	map_aname.18, 27
 
 	.type	map_aname.19, @object
 map_aname.19:
-	.asciz	"UnitConverter.Android"
-	.size	map_aname.19, 22
+	.asciz	"FormsViewGroup"
+	.size	map_aname.19, 15
 
 	.type	map_aname.20, @object
 map_aname.20:

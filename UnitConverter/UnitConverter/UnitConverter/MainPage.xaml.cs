@@ -1187,28 +1187,28 @@ namespace UnitConverter
             {
                 case "Length":
                     rawPicker.Items.Clear();
-                    rawPicker.Items.Add("inch");
+                    rawPicker.Items.Add("dm");
                     rawPicker.Items.Add("sm");
-                    rawPicker.Items.Add("foot");
+                    rawPicker.Items.Add("mm");
                     rawPicker.Items.Add("m");
 
                     processedPicker.Items.Clear();
-                    processedPicker.Items.Add("inch");
+                    processedPicker.Items.Add("dm");
                     processedPicker.Items.Add("sm");
-                    processedPicker.Items.Add("foot");
+                    processedPicker.Items.Add("mm");
                     processedPicker.Items.Add("m");
                     break;
                 case "Weight":
                     rawPicker.Items.Clear();
-                    rawPicker.Items.Add("pud");
+                    rawPicker.Items.Add("centner");
                     rawPicker.Items.Add("kg");
-                    rawPicker.Items.Add("ounces");
+                    rawPicker.Items.Add("g");
                     rawPicker.Items.Add("mg");
 
                     processedPicker.Items.Clear();
-                    processedPicker.Items.Add("pud");
+                    processedPicker.Items.Add("centner");
                     processedPicker.Items.Add("kg");
-                    processedPicker.Items.Add("ounces");
+                    processedPicker.Items.Add("g");
                     processedPicker.Items.Add("mg");
                     break;
                 case "Speed":

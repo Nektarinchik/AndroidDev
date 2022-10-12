@@ -12,12 +12,12 @@ namespace UnitConverter.Converter
             {
                 switch (processedUnit)
                 {
-                    case "pud":
-                        return System.Convert.ToDouble(rawValue) * 6.11e-8;
+                    case "centner":
+                        return System.Convert.ToDouble(rawValue) * 1e-8;
                     case "kg":
                         return System.Convert.ToDouble(rawValue) * 0.000001;
-                    case "ounces":
-                        return System.Convert.ToDouble(rawValue) * 0.000035;
+                    case "g":
+                        return System.Convert.ToDouble(rawValue) * 0.001;
                     case "mg":
                         return System.Convert.ToDouble(rawValue);
                 }

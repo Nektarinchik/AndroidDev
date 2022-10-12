@@ -4,7 +4,7 @@ using System.Text;
 
 namespace UnitConverter.Converter
 {
-    internal sealed class PudConverter : IUnitConverter
+    internal sealed class MmConverter : IUnitConverter
     {
         public double Convert(string processedUnit, string rawValue)
         {
@@ -12,14 +12,14 @@ namespace UnitConverter.Converter
             {
                 switch (processedUnit)
                 {
-                    case "pud":
+                    case "dm":
+                        return System.Convert.ToDouble(rawValue) * 0.01;
+                    case "sm":
+                        return System.Convert.ToDouble(rawValue) * 0.1;
+                    case "mm":
                         return System.Convert.ToDouble(rawValue);
-                    case "kg":
-                        return System.Convert.ToDouble(rawValue) * 16.38;
-                    case "ounces":
-                        return System.Convert.ToDouble(rawValue) * 577.79;
-                    case "mg":
-                        return System.Convert.ToDouble(rawValue) * 16380000;
+                    case "m":
+                        return System.Convert.ToDouble(rawValue) * 0.001;
                 }
                 return 0.0;
             }

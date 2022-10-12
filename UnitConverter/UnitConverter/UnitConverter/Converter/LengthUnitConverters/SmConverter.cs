@@ -12,14 +12,14 @@ namespace UnitConverter.Converter
             {
                 switch (processedUnit)
                 {
-                    case "inch":
-                        return System.Convert.ToDouble(rawValue) / 2.54;
+                    case "dm":
+                        return System.Convert.ToDouble(rawValue) * 0.1;
                     case "sm":
                         return System.Convert.ToDouble(rawValue);
-                    case "foot":
-                        return System.Convert.ToDouble(rawValue) * 0.033;
+                    case "mm":
+                        return System.Convert.ToDouble(rawValue) * 10;
                     case "m":
-                        return System.Convert.ToDouble(rawValue) / 100;
+                        return System.Convert.ToDouble(rawValue) * 0.01;
                 }
                 return 0.0;
             }

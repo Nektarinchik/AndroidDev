@@ -10,20 +10,20 @@ namespace UnitConverter.Converter
         {
             switch (rawUnit)
             {
-                case "inch":
-                    return new InchConverter();
+                case "dm":
+                    return new DmConverter();
                 case "sm":
                     return new SmConverter();
-                case "foot":
-                    return new FootConverter();
+                case "mm":
+                    return new MmConverter();
                 case "m":
                     return new MConverter();
-                case "pud":
-                    return new PudConverter();
+                case "centner":
+                    return new CentnerConverter();
                 case "kg":
                     return new KgConverter();
-                case "ounces":
-                    return new OuncesConverter();
+                case "g":
+                    return new GConverter();
                 case "mg":
                     return new MgConverter();
                 case "m/s":
