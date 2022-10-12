@@ -4,6 +4,8 @@ public class MonoPackageManager_Resources {
 		/* We need to ensure that "UnitConverter.Android.dll" comes first in this list. */
 		"UnitConverter.Android.dll",
 		"FormsViewGroup.dll",
+		"Plugin.Toast.Abstractions.dll",
+		"Plugin.Toast.dll",
 		"UnitConverter.dll",
 		"Xamarin.AndroidX.Activity.dll",
 		"Xamarin.AndroidX.Annotation.dll",

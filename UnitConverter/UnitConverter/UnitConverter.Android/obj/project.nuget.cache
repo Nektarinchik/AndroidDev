@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "2gspBZUU0Srb7YxEoib7TbEnlnXpLkT4xBSauDvLSkSZiJVXlPmGwJ/ntmoPlWC7tebDV1xK9lMRV2YEGynHNQ==",
+  "dgSpecHash": "6gt40tVwyuRTjzB5Sn1Ex6bkVGz+OYApnxoz6Mmg+9O3anDTL8HtKVXnbuKdyU4czMw1pSZZzrfizqst4jRR1A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Nektarinchik\\Desktop\\Git\\AndroidDev\\UnitConverter\\UnitConverter\\UnitConverter.Android\\UnitConverter.Android.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Nektarinchik\\.nuget\\packages\\plugin.toast\\2.2.0\\plugin.toast.2.2.0.nupkg.sha512",
     "C:\\Users\\Nektarinchik\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\Nektarinchik\\.nuget\\packages\\xamarin.androidx.activity\\1.2.4.1\\xamarin.androidx.activity.1.2.4.1.nupkg.sha512",
     "C:\\Users\\Nektarinchik\\.nuget\\packages\\xamarin.androidx.annotation\\1.2.0.1\\xamarin.androidx.annotation.1.2.0.1.nupkg.sha512",

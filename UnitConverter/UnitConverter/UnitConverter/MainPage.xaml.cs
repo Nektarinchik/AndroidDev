@@ -10,6 +10,7 @@ using UnitConverter.Converter;
 using Android.App;
 using Android.Content.PM;
 using ControlSamples.Effects;
+using Plugin.Toast;
 
 namespace UnitConverter
 {
@@ -530,6 +531,7 @@ namespace UnitConverter
                         throw new OverflowException();
                     rawValueStr.Clear();
                     rawValueStr.Append(buff);
+                    rawValueEntry.CursorPosition = rawValueStr.Length;
                     if (categoryPicker.SelectedIndex != -1 && rawPicker.SelectedIndex != -1)
                     {
                         CategoryConverter categoryConverter =
@@ -551,11 +553,11 @@ namespace UnitConverter
                 }
                 catch (FormatException)
                 {
-                    await DisplayAlert("Incorrect value", "", "Ok");
+                    CrossToastPopUp.Current.ShowToastError("Incorrect value");
                 }
                 catch (OverflowException)
                 {
-                    await DisplayAlert("Too much value", "", "Ok");
+                    CrossToastPopUp.Current.ShowToastMessage("Too much value");
                 }
             }
         }
@@ -566,7 +568,7 @@ namespace UnitConverter
             else
                 await Clipboard.SetTextAsync("0");
         }
-        private async void ButtonSwitch_Clicked(object sender, EventArgs e)
+        private void ButtonSwitch_Clicked(object sender, EventArgs e)
         {
             if (!processedValueStr.Contains("E"))
             {
@@ -579,6 +581,7 @@ namespace UnitConverter
                 rawPicker.SelectedIndexChanged += rawPicker_SelectedIndexChanged;
                 rawValueStr.Clear();
                 rawValueStr.Append(processedValueStr);
+                rawValueEntry.CursorPosition = rawValueStr.Length;
 
                 if (rawPicker.SelectedIndex != -1 && processedPicker.SelectedIndex != -1)
                 {
@@ -587,7 +590,7 @@ namespace UnitConverter
                 }
             }
             else
-                await DisplayAlert("Too much value", "", "Ok");
+                CrossToastPopUp.Current.ShowToastMessage("Too much value");
         }
         private void ButtonPop_Clicked(object sender, EventArgs e)
         {
@@ -636,14 +639,14 @@ namespace UnitConverter
             rawValueEntry.Text = "";
             processedValueEntry.Text = "";
         }
-        private async void ButtonPoint_Clicked(object sender, EventArgs e)
+        private void ButtonPoint_Clicked(object sender, EventArgs e)
         {
 
             if (!rawValueStr.ToString().Contains("."))
             {
                 if (rawValueStr.Length == 15)
                 {
-                    await DisplayAlert("too much Value", "", "Ok");
+                    CrossToastPopUp.Current.ShowToastMessage("Too much value");
                 }
                 else if (rawValueStr.Length == 14) return;
                 else if (string.IsNullOrEmpty(rawValueStr.ToString()))
@@ -680,7 +683,7 @@ namespace UnitConverter
             else
                 return;
         }
-        private async void ButtonZero_Clicked(object sender, EventArgs e)
+        private void ButtonZero_Clicked(object sender, EventArgs e)
         {
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
@@ -697,17 +700,15 @@ namespace UnitConverter
             }
             else
             {
-                if (rawValueEntry.CursorPosition != 0)
-                    rawValueStr.Insert(rawValueEntry.CursorPosition, "0");
-                else
-                    return;
+                rawValueStr.Insert(rawValueEntry.CursorPosition, "0");
             }
 
             if (rawValueStr.Length == 16)
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Too much value", "", "Ok");
+                CrossToastPopUp.Current.ShowToastMessage("Too much value");
+                return;
             }
             int temp = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
@@ -727,7 +728,7 @@ namespace UnitConverter
                 processedValueEntry.Text = processedValueStr;
             }
         }
-        private async void ButtonNine_Clicked(object sender, EventArgs e)
+        private void ButtonNine_Clicked(object sender, EventArgs e)
         {
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
@@ -751,7 +752,8 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Too much value", "", "Ok");
+                CrossToastPopUp.Current.ShowToastMessage("Too much value");
+                return;
             }
             int temp = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
@@ -771,7 +773,7 @@ namespace UnitConverter
                 processedValueEntry.Text = processedValueStr;
             }
         }
-        private async void ButtonEight_Clicked(object sender, EventArgs e)
+        private void ButtonEight_Clicked(object sender, EventArgs e)
         {
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
@@ -795,7 +797,8 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Too much value", "", "Ok");
+                CrossToastPopUp.Current.ShowToastMessage("Too much value");
+                return;
             }
             int temp = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
@@ -816,7 +819,7 @@ namespace UnitConverter
             }
         }
 
-        private async void ButtonSeven_Clicked(object sender, EventArgs e)
+        private void ButtonSeven_Clicked(object sender, EventArgs e)
         {
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
@@ -840,7 +843,8 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Too much value", "", "Ok");
+                CrossToastPopUp.Current.ShowToastMessage("Too much value");
+                return;
             }
             int temp = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
@@ -861,7 +865,7 @@ namespace UnitConverter
             }
         }
 
-        private async void ButtonSix_Clicked(object sender, EventArgs e)
+        private void ButtonSix_Clicked(object sender, EventArgs e)
         {
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
@@ -885,7 +889,8 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Too much value", "", "Ok");
+                CrossToastPopUp.Current.ShowToastMessage("Too much value");
+                return;
             }
             int temp = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
@@ -906,7 +911,7 @@ namespace UnitConverter
             }
         }
 
-        private async void ButtonFive_Clicked(object sender, EventArgs e)
+        private void ButtonFive_Clicked(object sender, EventArgs e)
         {
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
@@ -930,7 +935,8 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Too much value", "", "Ok");
+                CrossToastPopUp.Current.ShowToastMessage("Too much value");
+                return;
             }
             int temp = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
@@ -951,7 +957,7 @@ namespace UnitConverter
             }
         }
 
-        private async void ButtonFour_Clicked(object sender, EventArgs e)
+        private void ButtonFour_Clicked(object sender, EventArgs e)
         {
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
@@ -975,7 +981,8 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Too much value", "", "Ok");
+                CrossToastPopUp.Current.ShowToastMessage("Too much value");
+                return;
             }
             int temp = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
@@ -996,7 +1003,7 @@ namespace UnitConverter
             }
         }
 
-        private async void ButtonThree_Clicked(object sender, EventArgs e)
+        private void ButtonThree_Clicked(object sender, EventArgs e)
         {
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
@@ -1020,7 +1027,8 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Too much value", "", "Ok");
+                CrossToastPopUp.Current.ShowToastMessage("Too much value");
+                return;
             }
             int temp = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
@@ -1041,7 +1049,7 @@ namespace UnitConverter
             }
         }
 
-        private async void ButtonTwo_Clicked(object sender, EventArgs e)
+        private void ButtonTwo_Clicked(object sender, EventArgs e)
         {
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
@@ -1065,7 +1073,8 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Too much value", "", "Ok");
+                CrossToastPopUp.Current.ShowToastMessage("Too much value");
+                return;
             }
             int temp = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
@@ -1086,7 +1095,7 @@ namespace UnitConverter
             }
         }
 
-        private async void ButtonOne_Clicked(object sender, EventArgs e)
+        private void ButtonOne_Clicked(object sender, EventArgs e)
         {
             string buff = rawValueStr.ToString();
             if (buff.Equals("0"))
@@ -1110,7 +1119,8 @@ namespace UnitConverter
             {
                 rawValueStr.Clear();
                 rawValueStr.Append(buff);
-                await DisplayAlert("Too much value", "", "Ok");
+                CrossToastPopUp.Current.ShowToastMessage("Too much value");
+                return;
             }
             int temp = rawValueEntry.CursorPosition + 1;
             rawValueEntry.Text = rawValueStr.ToString();
